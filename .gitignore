@@ -60,3 +60,4 @@ coverage.xml
 # Virtual environments created by Poetry (optional)
 .pdm/
 poetry.lock
+.venv
