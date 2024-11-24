@@ -1,5 +1,5 @@
 # Define default variables
-FLASK_APP=src/api.py
+FLASK_APP=src/server.py
 FLASK_ENV=development
 PORT=5000
 HOST=0.0.0.0
