@@ -72,7 +72,6 @@ async function fetchMoonPhaseData() {
         <p><strong>Moon Name:</strong> ${moon.Moon.join(', ')}</p>
         <p><strong>Phase:</strong> ${moon.Phase}</p>
         <p><strong>Illumination:</strong> ${(moon.Illumination * 100).toFixed(1)}%</p>
-        <p><strong>Distance:</strong> ${moon.Distance.toFixed(1)} km</p>
         <p><strong>Zodiac Sign:</strong> ${apiData.zodiac_sign}</p>
         <p><strong>Degrees:</strong> ${apiData.degree}°</p>
         <img src="${imageUrl}" alt="${phase}">
@@ -85,42 +84,6 @@ async function fetchMoonPhaseData() {
     console.error(error);
   }
 }
-
-// Fetch moon data from the generated JSON file
-// async function fetchAstrologicalInsights() {
-//   try {
-//     const response = await fetch('moon_data.json');
-//     const data = await response.json();
-
-//     astrologicalInsightsContainer.innerHTML = `
-//       <h2>Astrological Insights ✨</h2>
-//       <p><strong>Zodiac Sign:</strong> ${data.zodiac_sign}</p>
-//      <p><strong>Degree:</strong> ${data.degree}°</p>
-//     `;
-//   } catch (error) {
-//     console.error("Error fetching astrological insights:", error);
-//     astrologicalInsightsContainer.innerHTML = `<p>Error: Unable to retrieve astrological insights.</p>`;
-//   }
-// }
-
-/*async function fetchAstrologicalInsights() {
-  try {
-    const moonData = JSON.parse(localStorage.getItem('moon_data'));
-    if (!moonData) {
-      throw new Error('Moon data not found');
-    }
-
-    astrologicalInsightsContainer.innerHTML = `
-      <h2>Astrological Insights ✨</h2>
-      <p><strong>Zodiac Sign:</strong> ${moonData.zodiac_sign}</p>
-      <p><strong>Degree:</strong> ${moonData.degree}°</p>
-    `;
-  } catch (error) {
-    console.error("Error fetching astrological insights:", error);
-    astrologicalInsightsContainer.innerHTML = `<p>Error: Unable to retrieve astrological insights.</p>`;
-  }
-}*/
-
 
 // Initialize
 fetchMoonPhaseData();
