@@ -65,15 +65,14 @@ async function fetchMoonPhaseData() {
     if (data.length > 0 && data[0].Error === 0) {
       const moon = data[0];
       const phase = moon.Phase;
-
+     
       // Update the moon data container with the moon's data and gate
       const imageUrl = `assets/images/${phaseImages[phase] || "new_moon.png"}`;
       moonPhaseDataContainer.innerHTML = `
         <p><strong>Moon Name:</strong> ${moon.Moon.join(', ')}</p>
         <p><strong>Phase:</strong> ${moon.Phase}</p>
         <p><strong>Illumination:</strong> ${(moon.Illumination * 100).toFixed(1)}%</p>
-        <p><strong>Zodiac Sign:</strong> ${apiData.zodiac_sign}</p>
-        <p><strong>Degrees:</strong> ${apiData.degree}°</p>
+        <p><strong>Zodiac Sign:</strong> ${apiData.zodiac_sign} ${apiData.degree}°</p>
         <img src="${imageUrl}" alt="${phase}">
       `;
     } else {

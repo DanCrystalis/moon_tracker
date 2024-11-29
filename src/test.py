@@ -31,7 +31,7 @@ def generate_moon_data():
     moon_data_list = []
 
     for day in range(30):
-        current_time = now + day   # loop for for the next 30 days
+        current_time = now + day   # loop for the next 30 days
         moon_apparent = moon.at(current_time).observe(earth).apparent()
         moon_ecliptic = moon_apparent.frame_latlon(ecliptic_frame)
         longitude = moon_ecliptic[1].degrees 
