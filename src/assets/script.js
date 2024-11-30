@@ -1,8 +1,6 @@
-const moonPhaseDataContainer = document.getElementById('moon-phase-data');
 const moonDataContainer = document.getElementById('moon-data');
 const astrologicalInsightsContainer = document.getElementById('astrological-insights');
 
-// Mapping moon phases to image file names
 const phaseImages = {
   "Dark Moon": "dark_moon.svg",
   "Waxing Crescent": "waxing_crescent.svg",
@@ -15,7 +13,7 @@ const phaseImages = {
 };
 
 // Fetch moon data 
-async function fetchMoonPhaseData() {
+async function fetchMoonData() {
   try {
     const unixTime = Math.floor(Date.now() / 1000);
     const response = await fetch(`https://api.farmsense.net/v1/moonphases/?d=${unixTime}`);
@@ -30,7 +28,7 @@ async function fetchMoonPhaseData() {
      
       // Update the moon data container with the moon's data
       const imageUrl = `assets/images/${phaseImages[phase] || "dark_moon.svg"}`;
-      moonPhaseDataContainer.innerHTML = `
+      moonDataContainer.innerHTML = `
         <p><strong>Moon Name:</strong> ${moon.Moon.join(', ')}</p>
         <p><strong>Phase:</strong> ${moon.Phase}</p>
         <p><strong>Illumination:</strong> ${(moon.Illumination * 100).toFixed(1)}%</p>
@@ -39,14 +37,14 @@ async function fetchMoonPhaseData() {
         <img src="${imageUrl}" alt="${phase}">
       `;
     } else {
-      moonPhaseDataContainer.innerHTML = `<p>Error fetching moon data: ${data[0]?.ErrorMsg || 'Unknown error'}</p>`;
+      moonDataContainer.innerHTML = `<p>Error fetching moon data: ${data[0]?.ErrorMsg || 'Unknown error'}</p>`;
     }
   } catch (error) {
-    moonPhaseDataContainer.innerHTML = `<p>Error fetching moon data. Please try again later.</p>`;
+    moonDataContainer.innerHTML = `<p>Error fetching moon data. Please try again later.</p>`;
     console.error(error);
   }
 }
 
 // Initialize
-fetchMoonPhaseData();
-setInterval(fetchMoonPhaseData, 600000);
+fetchMoonData();
+setInterval(fetchMoonData, 600000);

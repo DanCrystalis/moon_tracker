@@ -1,5 +1,5 @@
 body {
-  font-family: Calibri;
+  font-family: cursive;
   background-image: url(/assets/images/bg.webp) !important;
 
   text-align: center;
@@ -9,6 +9,9 @@ body {
 
 .container {
   padding: 20px;
+  width: 50%;
+  justify-self: center;
+  
   
 }
 
@@ -18,18 +21,21 @@ h1 {
   color: white;
 }
 
-#moon-data, #moon-phase-data {
+#moon-data {
   font-size: 1.2rem;
   margin-top: 20px;
   background: rgba(255, 255, 255, 0.1);
   padding: 15px;
   border-radius: 8px;
   color: white;
+  border-style: outset;
+  border-color: grey;
+  border-radius: 25px;
 }
 
-#moon-phase-data img {
+#moon-data img {
   margin-top: 15px;
-  width: 300px;
+  width: 200px;
   height: auto;
 
 }
