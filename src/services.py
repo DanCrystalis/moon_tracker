@@ -2,19 +2,20 @@ from skyfield.api import load
 from skyfield.framelib import ecliptic_frame
 
 zodiac_signs = [
-    {"sign": "Aries", "start": 0, "end": 29},
-    {"sign": "Taurus", "start": 30, "end": 59},
-    {"sign": "Gemini", "start": 60, "end": 89},
-    {"sign": "Cancer", "start": 90, "end": 119},
-    {"sign": "Leo", "start": 120, "end": 149},
-    {"sign": "Virgo", "start": 150, "end": 179},
-    {"sign": "Libra", "start": 180, "end": 209},
-    {"sign": "Scorpio", "start": 210, "end": 239},
-    {"sign": "Sagittarius", "start": 240, "end": 269},
-    {"sign": "Capricorn", "start": 270, "end": 299},
-    {"sign": "Aquarius", "start": 300, "end": 329},
-    {"sign": "Pisces", "start": 330, "end": 359},
+    {"sign": "Aries", "start": 0, "end": 29.9999},
+    {"sign": "Taurus", "start": 30, "end": 59.9999},
+    {"sign": "Gemini", "start": 60, "end": 89.9999},
+    {"sign": "Cancer", "start": 90, "end": 119.9999},
+    {"sign": "Leo", "start": 120, "end": 149.9999},
+    {"sign": "Virgo", "start": 150, "end": 179.9999},
+    {"sign": "Libra", "start": 180, "end": 209.9999},
+    {"sign": "Scorpio", "start": 210, "end": 239.9999},
+    {"sign": "Sagittarius", "start": 240, "end": 269.9999},
+    {"sign": "Capricorn", "start": 270, "end": 299.9999},
+    {"sign": "Aquarius", "start": 300, "end": 329.9999},
+    {"sign": "Pisces", "start": 330, "end": 359.9999},
 ]
+
 
 gates_date = [
     {
@@ -165,7 +166,7 @@ gates_date = [
         "name": "Gate 25",
         "sign": "Aries/Pisces",
         "center": "Identity",
-        "degrees": {"start": 28.15, "end": 333.523},
+        "degrees": {"start": 28.15, "end": 33.523},
     },
     {
         "name": "Gate 26",
@@ -406,42 +407,52 @@ gates_date = [
 
 def get_zodiac_sign(degree):
     for zodiac in zodiac_signs:
+        print(f"Checking {degree} against {zodiac['sign']} ({zodiac['start']}° - {zodiac['end']}°)")
         if zodiac["start"] <= degree <= zodiac["end"]:
             return zodiac["sign"]
+    print(f"No zodiac sign found for {degree}")
     return "Unknown"
 
+def get_gate(degree):
+    for gt in gates_date:
+        try:
+            start = gt["degrees"]["start"]
+            end = gt["degrees"]["end"]
+
+            print(f"Checking degree {degree} against gate '{gt['name']}' range ({start} - {end})")
+
+            if start <= degree <= end:
+                print(f"Match found: {gt['name']}")
+                return gt["name"]
+        except KeyError as e:
+            print(f"KeyError: {e} in {gt}")  # Debug if a key is missing
+        except TypeError as e:
+            print(f"TypeError: {e} in {gt}")  # Debug if there's a type mismatch
+    print(f"No match found for degree {degree}.")
+    return "unknown"
+
+ 
 
 def generate_moon_data():
     eph = load("de421.bsp")
     earth = eph["earth"]
     moon = eph["moon"]
     ts = load.timescale()
-  # Get the current local time and time zone
-    local_time = datetime.now()  # System's local time
-    local_timezone = ZoneInfo(local_time.astimezone().tzinfo.key)  # Automatically get system time zone
-    
-    # Convert local time to UTC
-    localized_time = local_time.replace(tzinfo=local_timezone)  # Localize time to system's timezone
-    utc_time = localized_time.astimezone(ZoneInfo("UTC"))  # Convert to UTC
-    
-    # Create a Skyfield Time object
-    skyfield_time = ts.utc(
-        utc_time.year, utc_time.month, utc_time.day,
-        utc_time.hour, utc_time.minute, utc_time.second
-    )
-    
-    # Calculate moon data
-    moon_apparent = moon.at(skyfield_time).observe(earth).apparent()
+    now = ts.now()
+    moon_apparent = moon.at(now).observe(earth).apparent()
     moon_ecliptic = moon_apparent.frame_latlon(ecliptic_frame)
     longitude = moon_ecliptic[1].degrees
+    longitude = (longitude + 360 - 180) % 360
     zodiac_sign = get_zodiac_sign(longitude)
     degree_in_sign = longitude % 30
+    gate = get_gate(longitude) 
 
     moon_data = {
         "date": now.utc_iso(),
         "longitude": round(longitude, 2),
         "zodiac_sign": zodiac_sign,
         "degree": round(degree_in_sign, 2),
+        "gate": gate,
     }
 
     return moon_data
