@@ -416,8 +416,22 @@ def generate_moon_data():
     earth = eph["earth"]
     moon = eph["moon"]
     ts = load.timescale()
-    now = ts.now()
-    moon_apparent = moon.at(now).observe(earth).apparent()
+  # Get the current local time and time zone
+    local_time = datetime.now()  # System's local time
+    local_timezone = ZoneInfo(local_time.astimezone().tzinfo.key)  # Automatically get system time zone
+    
+    # Convert local time to UTC
+    localized_time = local_time.replace(tzinfo=local_timezone)  # Localize time to system's timezone
+    utc_time = localized_time.astimezone(ZoneInfo("UTC"))  # Convert to UTC
+    
+    # Create a Skyfield Time object
+    skyfield_time = ts.utc(
+        utc_time.year, utc_time.month, utc_time.day,
+        utc_time.hour, utc_time.minute, utc_time.second
+    )
+    
+    # Calculate moon data
+    moon_apparent = moon.at(skyfield_time).observe(earth).apparent()
     moon_ecliptic = moon_apparent.frame_latlon(ecliptic_frame)
     longitude = moon_ecliptic[1].degrees
     zodiac_sign = get_zodiac_sign(longitude)
