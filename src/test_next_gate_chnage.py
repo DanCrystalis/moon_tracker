@@ -1,6 +1,6 @@
 from skyfield.api import load
 from skyfield.framelib import ecliptic_frame
-from datetime import timedelta
+from scipy.optimize import minimize_scalar
 
 zodiac_signs = [
     {"sign": "Aries", "start": 0, "end": 29.9999},
@@ -430,16 +430,16 @@ def get_gate(degree):
     print(f"No match found for degree {degree}.")
     return "unknown"
 
+
 def find_next_gate_change_exact(current_time, current_longitude):
     eph = load("de421.bsp")  # Load ephemeris data
     earth = eph["earth"]
     moon = eph["moon"]
     ts = load.timescale()
 
-    # Find current and next gates
+    # Determine the next gate
     current_gate = None
     next_gate = None
-
     for gt in gates_date:
         if gt["degrees"]["start"] <= current_longitude <= gt["degrees"]["end"]:
             current_gate = gt
@@ -447,28 +447,34 @@ def find_next_gate_change_exact(current_time, current_longitude):
             next_gate = gt
             break
 
-    if not next_gate:  # If no next gate, loop to the first gate
+    # If no next gate is found, loop back to the first gate
+    if not next_gate:
         next_gate = gates_date[0]
 
-    # Initialize search parameters
+    # Longitude of the next gate
     next_gate_start_longitude = next_gate["degrees"]["start"]
-    search_end = ts.utc(2100, 1, 1)  # Safety: Limit search duration
 
-    # Increment time in seconds using timedelta
-    while current_time < search_end:
-        moon_apparent = moon.at(current_time).observe(earth).apparent()
+    # Define the function to minimize: difference between moon longitude and target
+    def moon_longitude_difference(seconds_since_now):
+        test_time = current_time + (seconds_since_now / 86400)  # Convert seconds to days
+        moon_apparent = moon.at(test_time).observe(earth).apparent()
         moon_ecliptic = moon_apparent.frame_latlon(ecliptic_frame)
         moon_longitude = (moon_ecliptic[1].degrees + 360) % 360  # Normalize to 0-360°
+        return abs(moon_longitude - next_gate_start_longitude)
 
-        if moon_longitude >= next_gate_start_longitude:
-            return current_time.utc_iso(), next_gate["name"]
+    # Solve for the time when the moon reaches the next gate's longitude
+    result = minimize_scalar(
+        moon_longitude_difference,
+        bounds=(0, 86400 * 1),  # Search within 30 days
+        method="bounded"
+    )
 
-        # Increment by 60 seconds
-        current_time = ts.utc(
-            current_time.utc_datetime() + timedelta(seconds=60)
-        )
+    if not result.success:
+        raise ValueError("Unable to find next gate transition time.")
 
-    raise ValueError("Next gate transition not found within search range.")
+    # Compute the exact transition time
+    transition_time = current_time + (result.x / 86400)  # Convert seconds to days
+    return transition_time.utc_iso(), next_gate["name"]
 
 
 def generate_moon_data2():

@@ -16,7 +16,6 @@ zodiac_signs = [
     {"sign": "Pisces", "start": 330, "end": 359.9999},
 ]
 
-
 gates_date = [
     {
         "name": "Gate 1",
@@ -403,7 +402,6 @@ gates_date = [
         "degrees": {"start": 161.223, "end": 167},
     },
 ]
-
 
 def get_zodiac_sign(degree):
     for zodiac in zodiac_signs:

@@ -33,7 +33,7 @@ async function fetchMoonData() {
         <p><strong>Phase:</strong> ${moon.Phase}</p>
         <p><strong>Illumination:</strong> ${(moon.Illumination * 100).toFixed(1)}%</p>
         <p><strong>Zodiac Sign:</strong> ${apiData.zodiac_sign} ${apiData.degree}°</p>
-        <p><strong>Gate</strong> ${apiData.gate}</p>
+        <p><strong></strong> ${apiData.gate}</p>
         <img src="${imageUrl}" alt="${phase}">
       `;
     } else {

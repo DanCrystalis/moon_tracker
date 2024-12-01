@@ -26,7 +26,7 @@ h1 {
   margin-top: 20px;
   background: rgba(255, 255, 255, 0.1);
   padding: 15px;
-  border-radius: 8px;
+  border-width: 5px;
   color: white;
   border-style: outset;
   border-color: grey;
@@ -57,75 +57,4 @@ h1 {
   text-align: center;
   color: white;
   font-size: 1.2rem;
-}
-
-/* Additions for Moon Journal */
-#moon-journal {
-  margin-top: 40px;
-  text-align: left;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-}
-
-#moon-journal h2 {
-  font-size: 2.2rem;
-  margin-bottom: 20px;
-  color: white;
-  text-align: center;
-}
-
-#journal-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#journal-form label {
-  margin-top: 17px;
-  font-weight: bold;
-  color: white;
-}
-
-#journal-form input,
-#journal-form textarea,
-#journal-form button {
-  margin-top: 5px;
-  padding: 8px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  width: 50%;
-
-}
-
-#journal-form textarea {
-  resize: none;
-}
-
-#journal-form button {
-  margin-top: 15px;
-  background: #007bff;
-  color: white;
-  cursor: pointer;
-  width: 18%;
-}
-
-#journal-form button:hover {
-  background: #0056b3;
-  width: 16%;
-}
-
-#journal-entries {
-  margin-top: 20px;
-  list-style: none;
-  padding: 0;
-}
-
-#journal-entries li {
-  background: rgba(255, 255, 255, 0.1);
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 5px;
 }
