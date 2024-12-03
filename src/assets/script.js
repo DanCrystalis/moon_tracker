@@ -1,16 +1,17 @@
 const moonDataContainer = document.getElementById('moon-data');
 const astrologicalInsightsContainer = document.getElementById('astrological-insights');
 
-const phaseImages = [
-  {"Dark Moon": "dark_moon.svg"},
-  {"Waxing Crescent": "waxing_crescent.svg"},
-  {"First Quarter": "first_quarter.svg"},
-  {"Waxing Gibbous": "waxing_gibbous.svg"},
-  {"Full Moon": "full_moon.svg"},
-  {"Waning Gibbous": "waning_gibbous.svg"},
-  {"Last Quarter": "last_quarter.svg"},
-  {"Waning Crescent": "waning_crescent.svg"}
-];
+const phaseImages = {
+  "Dark Moon": "dark_moon.svg",
+  "Waxing Crescent": "waxing_crescent.svg",
+  "First Quarter": "first_quarter.svg",
+  "Waxing Gibbous": "waxing_gibbous.svg",
+  "Full Moon": "full_moon.svg",
+  "Waning Gibbous": "waning_gibbous.svg",
+  "Last Quarter": "last_quarter.svg",
+  "Waning Crescent": "waning_crescent.svg"
+};
+
 
 // Fetch moon data 
 async function fetchMoonData() {
