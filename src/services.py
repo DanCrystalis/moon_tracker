@@ -1,5 +1,6 @@
-import swisseph as swe
-from datetime import datetime, timedelta
+import swisseph as swe 
+from datetime import datetime, timedelta, timezone 
+import DateTime
 import pytz
 
 zodiac_signs = [
@@ -460,7 +461,7 @@ def next_gate_change(longitude, current_time, step_minutes=5):
             return transition_datetime, new_gate
 
 def generate_moon_data():
-    now = datetime.datetime.now(datetime.UTC)()
+    now = datetime.utcnow()
     
     jd = swe.julday(
         now.year,
