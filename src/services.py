@@ -2,6 +2,7 @@ import swisseph as swe
 from datetime import datetime, timedelta, timezone 
 import DateTime
 import pytz
+from decimal import Decimal
 
 zodiac_signs = [
     {"sign": "Aries", "start": 0, "end": 29.9999},
@@ -429,24 +430,42 @@ def get_gate(degree):
     print(f"No match found for degree {degree}.")
     return "unknown"
 
-def next_gate_change(longitude, current_time, step_minutes=5):
+def next_gate_change(longitude, reference_time=None, step_minutes=1):
+    """Find the exact time the moon enters the next gate."""
+    if reference_time is None:
+        reference_time = datetime.utcnow().replace(second=0, microsecond=0)
+
+    # Calculate the Julian Day (JD) from the reference time
     jd = swe.julday(
-        current_time.year,
-        current_time.month,
-        current_time.day,
-        current_time.hour + current_time.minute / 60 + current_time.second / 3600,
+        reference_time.year,
+        reference_time.month,
+        reference_time.day,
+        reference_time.hour + reference_time.minute / 60
     )
-    
+
+    # Sort gates_data by start degree
+    sorted_gates = sorted(gates_data, key=lambda g: g["degrees"]["start"])
+
+    # Determine the current gate
     current_gate = get_gate(longitude)
-    
+
+    # Find the next gate dynamically
+    current_gate_info = next(g for g in sorted_gates if g["name"] == current_gate)
+    current_start_degree = current_gate_info["degrees"]["start"]
+
+    next_gate = next(
+        (g for g in sorted_gates if g["degrees"]["start"] > current_start_degree),
+        sorted_gates[0]  # Wrap around to the first gate if no higher start degree exists
+    )
+    target_degree = next_gate["degrees"]["start"]
+
+    # Increment time until the moon's longitude matches the next gate's start degree
     while True:
-        jd += step_minutes / (24 * 60)
-        
         moon_position, _ = swe.calc_ut(jd, swe.MOON)
-        new_longitude = moon_position[0]
-        new_gate = get_gate(new_longitude)
-        
-        if new_gate != current_gate:
+        current_longitude = moon_position[0]
+
+        # Check if we've reached the target degree (start of the next gate)
+        if current_longitude >= target_degree:
             transition_time = swe.revjul(jd)
             year, month, day = map(int, transition_time[:3])
             hour = int(transition_time[3])
@@ -454,7 +473,11 @@ def next_gate_change(longitude, current_time, step_minutes=5):
             second = int((((transition_time[3] - hour) * 60) - minute) * 60)
 
             transition_datetime = datetime(year, month, day, hour, minute, second)
-            return transition_datetime, new_gate
+            return transition_datetime, next_gate["name"]
+
+        # Increment Julian Day by the step size
+        jd += step_minutes / (24 * 60)  # Convert minutes to fraction of a day
+
 
 def generate_moon_data():
     now = datetime.utcnow()
