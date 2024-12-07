@@ -440,17 +440,13 @@ def next_gate_change(longitude, current_time, step_minutes=5):
     current_gate = get_gate(longitude)
     
     while True:
-        # Increment Julian Day by step size
-        jd += step_minutes / (24 * 60)  # Convert minutes to fractional days
+        jd += step_minutes / (24 * 60)
         
-        # Calculate Moon's longitude at new time
         moon_position, _ = swe.calc_ut(jd, swe.MOON)
         new_longitude = moon_position[0]
         new_gate = get_gate(new_longitude)
         
-        # Check for gate change
         if new_gate != current_gate:
-            # Convert Julian Day to datetime
             transition_time = swe.revjul(jd)
             year, month, day = map(int, transition_time[:3])
             hour = int(transition_time[3])
@@ -470,20 +466,16 @@ def generate_moon_data():
         now.hour + now.minute / 60 + now.second / 3600,
     )
 
-    # Load Swiss Ephemeris and calculate the Moon's position
     moon_position, _ = swe.calc_ut(jd, swe.MOON)
-    longitude = moon_position[0]  # Moon's longitude in degrees
+    longitude = moon_position[0]
 
-    # Calculate zodiac sign and degree within the sign
     zodiac_sign = get_zodiac_sign(longitude)
     degree_in_sign = longitude % 30
 
-    # Get the associated gate
     gate = get_gate(longitude)
     
     next_change_time, next_gate = next_gate_change(longitude, now)
 
-    # Generate Moon data
     moon_data = {
         "date": now.isoformat(),
         "longitude": round(longitude, 6),

@@ -12,8 +12,6 @@ const phaseImages = {
   "Waning Crescent": "waning_crescent.svg"
 };
 
-
-// Fetch moon data 
 async function fetchMoonData() {
   try {
     const unixTime = Math.floor(Date.now() / 1000);
@@ -26,8 +24,6 @@ async function fetchMoonData() {
     if (data.length > 0 && data[0].Error === 0) {
       const moon = data[0];
       const phase = moon.Phase;
-     
-      // Update the moon data container with the moon's data
       const imageUrl = `assets/images/${phaseImages[phase]}`;
 
       moonDataContainer.innerHTML = `
@@ -37,7 +33,8 @@ async function fetchMoonData() {
         <p><strong>Illumination:</strong> ${(moon.Illumination * 100).toFixed(1)}%</p>
         <p><strong>Zodiac Sign:</strong> ${apiData.zodiac_sign} ${apiData.degree}°</p>
         <p><strong> ${apiData.gate}</strong></p>
-        <p><strong>Next Gate:</strong> ${apiData.next_gate}</p>
+        <p><strong>Next Gate:</strong></p>
+        <p>${apiData.next_gate}</p>
         <p>${apiData.next_gate_change_time.replace(/T/g, ' ')} UTC</p>
         
       `;
@@ -50,6 +47,5 @@ async function fetchMoonData() {
   }
 }
 
-// Initialize
 fetchMoonData();
 setInterval(fetchMoonData, 600000);
