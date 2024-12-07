@@ -1,3 +1,5 @@
-skyfield
 Flask
 gunicorn
+pyswisseph
+datetime
+pytz

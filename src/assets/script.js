@@ -31,12 +31,15 @@ async function fetchMoonData() {
       const imageUrl = `assets/images/${phaseImages[phase]}`;
 
       moonDataContainer.innerHTML = `
+        <img src="${imageUrl}" alt="${phase}" id="${(phase.replace(/ /g, '_'))}">
         <p><strong>Moon Name:</strong> ${moon.Moon.join(', ')}</p>
         <p><strong>Phase:</strong> ${moon.Phase}</p>
         <p><strong>Illumination:</strong> ${(moon.Illumination * 100).toFixed(1)}%</p>
         <p><strong>Zodiac Sign:</strong> ${apiData.zodiac_sign} ${apiData.degree}°</p>
         <p><strong> ${apiData.gate}</strong></p>
-        <img src="${imageUrl}" alt="${phase}" id="${(phase.replace(/ /g, '_'))}">
+        <p><strong>Next Gate:</strong> ${apiData.next_gate}</p>
+        <p>${apiData.next_gate_change_time.replace(/T/g, ' ')} UTC</p>
+        
       `;
     } else {
       moonDataContainer.innerHTML = `<p>Error fetching moon data: ${data[0]?.ErrorMsg || 'Unknown error'}</p>`;

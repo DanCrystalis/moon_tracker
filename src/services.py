@@ -1,5 +1,6 @@
-from skyfield.api import load
-from skyfield.framelib import ecliptic_frame
+import swisseph as swe
+from datetime import datetime, timedelta
+import pytz
 
 zodiac_signs = [
     {"sign": "Aries", "start": 0, "end": 29.9999},
@@ -16,7 +17,7 @@ zodiac_signs = [
     {"sign": "Pisces", "start": 330, "end": 359.9999},
 ]
 
-gates_date = [
+gates_data = [
     {
         "name": "Gate 1",
         "sign": "Scorpio",
@@ -405,14 +406,12 @@ gates_date = [
 
 def get_zodiac_sign(degree):
     for zodiac in zodiac_signs:
-        print(f"Checking {degree} against {zodiac['sign']} ({zodiac['start']}° - {zodiac['end']}°)")
         if zodiac["start"] <= degree <= zodiac["end"]:
             return zodiac["sign"]
-    print(f"No zodiac sign found for {degree}")
     return "Unknown"
 
 def get_gate(degree):
-    for gt in gates_date:
+    for gt in gates_data:
         try:
             start = gt["degrees"]["start"]
             end = gt["degrees"]["end"]
@@ -423,34 +422,79 @@ def get_gate(degree):
                 print(f"Match found: {gt['name']}")
                 return gt["name"]
         except KeyError as e:
-            print(f"KeyError: {e} in {gt}")  # Debug if a key is missing
+            print(f"KeyError: {e} in {gt}") 
         except TypeError as e:
-            print(f"TypeError: {e} in {gt}")  # Debug if there's a type mismatch
+            print(f"TypeError: {e} in {gt}")  
     print(f"No match found for degree {degree}.")
     return "unknown"
 
- 
+def next_gate_change(longitude, current_time, step_minutes=5):
+    jd = swe.julday(
+        current_time.year,
+        current_time.month,
+        current_time.day,
+        current_time.hour + current_time.minute / 60 + current_time.second / 3600,
+    )
+    
+    current_gate = get_gate(longitude)
+    
+    while True:
+        # Increment Julian Day by step size
+        jd += step_minutes / (24 * 60)  # Convert minutes to fractional days
+        
+        # Calculate Moon's longitude at new time
+        moon_position, _ = swe.calc_ut(jd, swe.MOON)
+        new_longitude = moon_position[0]
+        new_gate = get_gate(new_longitude)
+        
+        # Check for gate change
+        if new_gate != current_gate:
+            # Convert Julian Day to datetime
+            transition_time = swe.revjul(jd)
+            year, month, day = map(int, transition_time[:3])
+            hour = int(transition_time[3])
+            minute = int((transition_time[3] - hour) * 60)
+            second = int((((transition_time[3] - hour) * 60) - minute) * 60)
+
+            transition_datetime = datetime(year, month, day, hour, minute, second)
+            return transition_datetime, new_gate
 
 def generate_moon_data():
-    eph = load("de421.bsp")
-    earth = eph["earth"]
-    moon = eph["moon"]
-    ts = load.timescale()
-    now = ts.now()
-    moon_apparent = moon.at(now).observe(earth).apparent()
-    moon_ecliptic = moon_apparent.frame_latlon(ecliptic_frame)
-    longitude = moon_ecliptic[1].degrees
-    longitude = (longitude + 360 - 180) % 360
+    now = datetime.datetime.now(datetime.UTC)()
+    
+    jd = swe.julday(
+        now.year,
+        now.month,
+        now.day,
+        now.hour + now.minute / 60 + now.second / 3600,
+    )
+
+    # Load Swiss Ephemeris and calculate the Moon's position
+    moon_position, _ = swe.calc_ut(jd, swe.MOON)
+    longitude = moon_position[0]  # Moon's longitude in degrees
+
+    # Calculate zodiac sign and degree within the sign
     zodiac_sign = get_zodiac_sign(longitude)
     degree_in_sign = longitude % 30
-    gate = get_gate(longitude) 
 
+    # Get the associated gate
+    gate = get_gate(longitude)
+    
+    next_change_time, next_gate = next_gate_change(longitude, now)
+
+    # Generate Moon data
     moon_data = {
-        "date": now.utc_iso(),
-        "longitude": round(longitude, 2),
+        "date": now.isoformat(),
+        "longitude": round(longitude, 6),
         "zodiac_sign": zodiac_sign,
         "degree": round(degree_in_sign, 2),
         "gate": gate,
+        "next_gate_change_time": next_change_time.isoformat(),
+        "next_gate": next_gate,
     }
 
+    print(f"Moon Data: {moon_data}")
     return moon_data
+
+if __name__ == "__main__":
+    generate_moon_data()

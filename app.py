@@ -1,5 +1,6 @@
 from flask import Flask, send_from_directory
 from src.services import generate_moon_data
+#from src.services import generate_sun_data
 
 app = Flask(__name__, static_folder="src/assets")
 
@@ -12,6 +13,10 @@ def serve_index():
 @app.route("/data")
 def get_data():
     return generate_moon_data()
+
+#@app.route("/data_sun")
+#def get_data_sun():
+    #return generate_sun_data()
 
 # Route to serve static assets (JS, CSS, etc.)
 @app.route("/assets/<path:filename>")
