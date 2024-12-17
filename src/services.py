@@ -434,7 +434,7 @@ def get_gate(degree):
 
 def next_ten_gate_changes(reference_time=None, step_minutes=1):
     if reference_time is None:
-        reference_time = datetime.utcnow().replace(second=0, microsecond=0)
+        reference_time = datetime.utcnow()
 
     jd = swe.julday(
         reference_time.year,

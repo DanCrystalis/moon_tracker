@@ -44,9 +44,9 @@ if (apiData.next_10_gates.length > 0) {
       nextGatesContainer.id = 'nextGatesContainer';
       nextGatesContainer.style.display = 'none';
 
-      nextGatesContainer.innerHTML += `<br/><strong>Next Ten Gates:</strong><br>`;
+      nextGatesContainer.innerHTML += `<br/><strong>Next Nine Gates:</strong><br>`;
 
-      apiData.next_10_gates.forEach((gate, index) => {
+      apiData.next_10_gates.slice(1).forEach((gate, index) => {
         nextGatesContainer.innerHTML += `${gate[1]} - ${gate[0].replace(/T/g, ' ').slice(0, 16)} UTC`;
         if (index < apiData.next_10_gates.length - 1) {
           nextGatesContainer.innerHTML += `<br>`;
@@ -56,14 +56,14 @@ if (apiData.next_10_gates.length > 0) {
       moonDataContainer.appendChild(nextGatesContainer);
 
       const toggleButton = document.createElement('button');
-      toggleButton.textContent = 'Show Next Ten Gates';
+      toggleButton.textContent = 'Show Next Nine Gates';
       toggleButton.addEventListener('click', () => {
         if (nextGatesContainer.style.display === 'none') {
           nextGatesContainer.style.display = 'block';
-          toggleButton.textContent = 'Hide Next Ten Gates';
+          toggleButton.textContent = 'Hide Next Nine Gates';
         } else {
           nextGatesContainer.style.display = 'none';
-          toggleButton.textContent = 'Show Next Ten Gates';
+          toggleButton.textContent = 'Show Next Nine Gates';
         }
       });
 
