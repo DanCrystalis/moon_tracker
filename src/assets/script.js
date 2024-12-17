@@ -1,14 +1,13 @@
 const moonDataContainer = document.getElementById('moon-data');
-const astrologicalInsightsContainer = document.getElementById('astrological-insights');
 
 const phaseImages = {
   "Dark Moon": "dark_moon.svg",
   "Waxing Crescent": "waxing_crescent.svg",
-  "First Quarter": "first_quarter.svg",
+  "1st Quarter": "1st_quarter.svg",
   "Waxing Gibbous": "waxing_gibbous.svg",
   "Full Moon": "full_moon.svg",
   "Waning Gibbous": "waning_gibbous.svg",
-  "Last Quarter": "last_quarter.svg",
+  "3rd Quarter": "last_quarter.svg",
   "Waning Crescent": "waning_crescent.svg"
 };
 
@@ -28,16 +27,48 @@ async function fetchMoonData() {
 
       moonDataContainer.innerHTML = `
         <img src="${imageUrl}" alt="${phase}" id="${(phase.replace(/ /g, '_'))}">
-        <p><strong>Moon Name:</strong> ${moon.Moon.join(', ')}</p>
-        <p><strong>Phase:</strong> ${moon.Phase}</p>
-        <p><strong>Illumination:</strong> ${(moon.Illumination * 100).toFixed(1)}%</p>
-        <p><strong>Zodiac Sign:</strong> ${apiData.zodiac_sign} ${apiData.degree}°</p>
-        <p><strong> ${apiData.gate}</strong></p>
-        <p><strong>Next Gate:</strong></p>
-        <p>${apiData.next_gate}</p>
-        <p>${apiData.next_gate_change_time.replace(/T/g, ' ')} UTC</p>
-        
+        <p><strong>Moon Name:</strong><br/>${moon.Moon.join(', ')}</p>
+        <p><strong>Phase:</strong><br/>${moon.Phase}</p>
+        <p><strong>Illumination:</strong><br/>${(moon.Illumination * 100).toFixed(1)}%</p>
+        <p><strong>Zodiac Sign:</strong><br/>${apiData.zodiac_sign} ${apiData.degree}°</p>
+        <p><strong>${apiData.gate}<br/></strong></p>
+        <br/><strong>Next Gate:</strong><br/>
       `;
+
+if (apiData.next_10_gates.length > 0) {
+  const firstGate = apiData.next_10_gates[0];
+  moonDataContainer.innerHTML +=
+    `${firstGate[1]}<br/>${firstGate[0].replace(/T/g, ' ').slice(0, 16)} UTC<br/>`;
+}
+      const nextGatesContainer = document.createElement('div');
+      nextGatesContainer.id = 'nextGatesContainer';
+      nextGatesContainer.style.display = 'none';
+
+      nextGatesContainer.innerHTML += `<br/><strong>Next Ten Gates:</strong><br>`;
+
+      apiData.next_10_gates.forEach((gate, index) => {
+        nextGatesContainer.innerHTML += `${gate[1]} - ${gate[0].replace(/T/g, ' ').slice(0, 16)} UTC`;
+        if (index < apiData.next_10_gates.length - 1) {
+          nextGatesContainer.innerHTML += `<br>`;
+        }
+      });
+
+      moonDataContainer.appendChild(nextGatesContainer);
+
+      const toggleButton = document.createElement('button');
+      toggleButton.textContent = 'Show Next Ten Gates';
+      toggleButton.addEventListener('click', () => {
+        if (nextGatesContainer.style.display === 'none') {
+          nextGatesContainer.style.display = 'block';
+          toggleButton.textContent = 'Hide Next Ten Gates';
+        } else {
+          nextGatesContainer.style.display = 'none';
+          toggleButton.textContent = 'Show Next Ten Gates';
+        }
+      });
+
+      moonDataContainer.appendChild(toggleButton);
+
     } else {
       moonDataContainer.innerHTML = `<p>Error fetching moon data: ${data[0]?.ErrorMsg || 'Unknown error'}</p>`;
     }
