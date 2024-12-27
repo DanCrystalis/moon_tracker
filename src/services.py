@@ -434,15 +434,18 @@ def get_gate(degree):
 
 def next_ten_gate_changes(reference_time=None, step_minutes=1):
     if reference_time is None:
-        reference_time = datetime.utcnow()
+        reference_time = datetime.utcnow().replace(microsecond=0)
+        print(f'{reference_time}')
+        
 
     jd = swe.julday(
         reference_time.year,
         reference_time.month,
         reference_time.day,
-        reference_time.hour + reference_time.minute / 60,
+        reference_time.hour + reference_time.minute / 60 + reference_time.second / 3600,
     )
-
+    print(f'{jd}')
+    
     moon_position, _ = swe.calc_ut(jd, swe.MOON)
     current_longitude = moon_position[0]
     current_gate = next(
@@ -458,32 +461,41 @@ def next_ten_gate_changes(reference_time=None, step_minutes=1):
         next_index = (current_index + i + 1) % len(gates_data)
         next_gate = gates_data[next_index]
         target_degree = next_gate["degrees"]["start"]
-
+        step_days = step_minutes / (24 * 60)
+        
         while True:
             moon_position, _ = swe.calc_ut(jd, swe.MOON)
             current_longitude = moon_position[0]
-
-            if current_longitude >= target_degree:
-                transition_time = swe.revjul(jd)
-                year, month, day = map(int, transition_time[:3])
-                hour = int(transition_time[3])
-                minute = int((transition_time[3] - hour) * 60)
-                second = int((((transition_time[3] - hour) * 60) - minute) * 60)
-                microsecond = int(
-                    ((((transition_time[3] - hour) * 60) - minute) * 60 - second) * 1e6
-                )
-
-                transition_datetime = datetime(
-                    year, month, day, hour, minute, second, microsecond
-                )
+            transition_time = swe.revjul(jd)
+            year, month, day = map(int, transition_time[:3])
+            hours, minutes, seconds = decimal_to_hms(transition_time[3])
+            transition_datetime = datetime(
+                year, month, day, hours, minutes, seconds
+            )
+            
+            if abs(current_longitude - target_degree) < 0.01:
                 results.append((transition_datetime.isoformat(), next_gate["name"]))
-
-                jd += step_minutes / (24 * 60)
                 break
-
-            jd += step_minutes / (24 * 60)
+            
+            else:
+                jd += step_days
 
     return results
+
+
+def decimal_to_hms(decimal_hours):
+    hours = int(decimal_hours)
+    minutes = int((decimal_hours - hours) * 60)
+    seconds = round((decimal_hours - hours - minutes / 60) * 3600)
+    return hours, minutes, seconds
+
+def convert_to_dms(degrees):
+    d = int(degrees)
+    
+    remaining = abs(degrees - d)
+    minutes = int(remaining * 60)
+
+    return f"{d}°{minutes}"
 
 def generate_moon_data():
     now = datetime.utcnow()
@@ -500,6 +512,7 @@ def generate_moon_data():
 
     zodiac_sign = get_zodiac_sign(longitude)
     degree_in_sign = longitude % 30
+    dms = convert_to_dms(degree_in_sign)
 
     gate = get_gate(longitude)
 
@@ -509,7 +522,7 @@ def generate_moon_data():
         "date": now.isoformat(),
         "longitude": round(longitude, 6),
         "zodiac_sign": zodiac_sign,
-        "degree": round(degree_in_sign, 2),
+        "degree": dms,
         "gate": gate,
         "next_10_gates": next_ten_gates,
     }

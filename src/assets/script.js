@@ -30,8 +30,7 @@ async function fetchMoonData() {
         <p><strong>Moon Name:</strong><br/>${moon.Moon.join(', ')}</p>
         <p><strong>Phase:</strong><br/>${moon.Phase}</p>
         <p><strong>Illumination:</strong><br/>${(moon.Illumination * 100).toFixed(1)}%</p>
-        <p><strong>Zodiac Sign:</strong><br/>${apiData.zodiac_sign} ${apiData.degree}°</p>
-        <p><strong>${apiData.gate}<br/></strong></p>
+        <p><strong>Position:</strong><br/>${apiData.gate} - ${apiData.zodiac_sign} ${apiData.degree}"</p>
         <br/><strong>Next Gate:</strong><br/>
       `;
 
@@ -47,7 +46,7 @@ if (apiData.next_10_gates.length > 0) {
       nextGatesContainer.innerHTML += `<br/><strong>Next Nine Gates:</strong><br>`;
 
       apiData.next_10_gates.slice(1).forEach((gate, index) => {
-        nextGatesContainer.innerHTML += `${gate[1]} - ${gate[0].replace(/T/g, ' ').slice(0, 16)} UTC`;
+        nextGatesContainer.innerHTML += `${gate[1]} <br/> ${gate[0].replace(/T/g, ' ').slice(0, 16)} UTC<br/>`;
         if (index < apiData.next_10_gates.length - 1) {
           nextGatesContainer.innerHTML += `<br>`;
         }

@@ -11,8 +11,6 @@ body {
 }
 
 .container {
-  padding: 20px;
-  width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,6 +21,7 @@ h1 {
   font-size: 2rem;
   margin-bottom: 20px;
   color: white;
+  text-shadow: 1px 1px 4px #ffffff;
 }
 
 #moon-data {
@@ -65,4 +64,8 @@ button:hover {
   box-shadow:
     inset 2px 2px 5px 2px rgb(255, 255, 255, 0.4),
     inset -2px -2px 6px 2px rgba(0, 0, 0, 0.7);
+}
+
+strong {
+  text-shadow: 1px 1px 3px #ffffff;
 }
