@@ -48,6 +48,7 @@ button {
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
   font-weight: bold;
+  color: black !important;
   border-radius: 6px;
   border: 1px solid #313131;
   font-size: 1rem;
