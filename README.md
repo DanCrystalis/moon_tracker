@@ -1,6 +1,5 @@
 # README
 
-
 ## Setup and run
 
 1. Open terminal in VSCODE with Ubuntu (WSL)
@@ -16,10 +15,10 @@
 4. ```shell
     make run
     ```
-5. Open browser on [`http://localhost:5000`Update ](http://localhost:5000)
+
+5. Open browser on [`http://localhost:5000`Update](http://localhost:5000)
 
 6. Press `ctrl+c` in the terminal to exit te server
-
 
 ---
 

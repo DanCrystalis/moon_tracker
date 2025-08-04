@@ -1,5 +1,8 @@
 import swisseph as swe
 from datetime import datetime
+import math
+import json
+import os
 
 zodiac_signs = [
     {"sign": "Aries", "start": 0, "end": 30},
@@ -16,392 +19,29 @@ zodiac_signs = [
     {"sign": "Pisces", "start": 330, "end": 360},
 ]
 
-gates_data = [
-    {
-        "name": "Gate 17",
-        "sign": "Aries",
-        "center": "Ajna",
-        "degrees": {"start": 3.523, "end": 9.3},
-    },
-    {
-        "name": "Gate 21",
-        "sign": "Aries",
-        "center": "Heart",
-        "degrees": {"start": 9.3, "end": 15.073},
-    },
-    {
-        "name": "Gate 51",
-        "sign": "Aries",
-        "center": "Heart",
-        "degrees": {"start": 15.073, "end": 20.45},
-    },
-    {
-        "name": "Gate 42",
-        "sign": "Aries",
-        "center": "Sacral",
-        "degrees": {"start": 20.45, "end": 26.223},
-    },
-    {
-        "name": "Gate 3 ",
-        "sign": "Aries/Taurus",
-        "center": "Sacral",
-        "degrees": {"start": 26.223, "end": 32},
-    },
-    {
-        "name": "Gate 27",
-        "sign": "Taurus",
-        "center": "Sacral",
-        "degrees": {"start": 32, "end": 37.373},
-    },
-    {
-        "name": "Gate 24",
-        "sign": "Taurus",
-        "center": "Ajna",
-        "degrees": {"start": 37.373, "end": 43.15},
-    },
-    {
-        "name": "Gate 2 ",
-        "sign": "Taurus",
-        "center": "Identity",
-        "degrees": {"start": 43.15, "end": 48.523},
-    },
-    {
-        "name": "Gate 23",
-        "sign": "Taurus",
-        "center": "Throat",
-        "degrees": {"start": 48.523, "end": 54.3},
-    },
-    {
-        "name": "Gate 8 ",
-        "sign": "Taurus/Gemini",
-        "center": "Throat",
-        "degrees": {"start": 54.3, "end": 60.073},
-    },
-    {
-        "name": "Gate 20",
-        "sign": "Gemini",
-        "center": "Throat",
-        "degrees": {"start": 60.073, "end": 65.45},
-    },
-    {
-        "name": "Gate 16",
-        "sign": "Gemini",
-        "center": "Throat",
-        "degrees": {"start": 65.45, "end": 71.223},
-    },
-    {
-        "name": "Gate 35",
-        "sign": "Gemini",
-        "center": "Throat",
-        "degrees": {"start": 71.223, "end": 77},
-    },
-    {
-        "name": "Gate 45",
-        "sign": "Gemini",
-        "center": "Throat",
-        "degrees": {"start": 77, "end": 82.373},
-    },
-    {
-        "name": "Gate 12",
-        "sign": "Gemini",
-        "center": "Throat",
-        "degrees": {"start": 82.373, "end": 88.15},
-    },
-    {
-        "name": "Gate 15",
-        "sign": "Gemini/Cancer",
-        "center": "Identity",
-        "degrees": {"start": 88.15, "end": 93.523},
-    },
-    {
-        "name": "Gate 52",
-        "sign": "Cancer",
-        "center": "Root",
-        "degrees": {"start": 93.523, "end": 99.3},
-    },
-    {
-        "name": "Gate 39",
-        "sign": "Cancer",
-        "center": "Root",
-        "degrees": {"start": 99.3, "end": 105.073},
-    },
-    {
-        "name": "Gate 53",
-        "sign": "Cancer",
-        "center": "Root",
-        "degrees": {"start": 105.073, "end": 110.45},
-    },
-    {
-        "name": "Gate 62",
-        "sign": "Cancer",
-        "center": "Throat",
-        "degrees": {"start": 110.45, "end": 116.223},
-    },
-    {
-        "name": "Gate 56",
-        "sign": "Cancer/Leo",
-        "center": "Throat",
-        "degrees": {"start": 116.223, "end": 122},
-    },
-    {
-        "name": "Gate 31",
-        "sign": "Leo",
-        "center": "Throat",
-        "degrees": {"start": 122, "end": 127.373},
-    },
-    {
-        "name": "Gate 33",
-        "sign": "Leo",
-        "center": "Throat",
-        "degrees": {"start": 127.373, "end": 133.15},
-    },
-    {
-        "name": "Gate 7 ",
-        "sign": "Leo",
-        "center": "Identity",
-        "degrees": {"start": 133.15, "end": 138.523},
-    },
-    {
-        "name": "Gate 4 ",
-        "sign": "Leo",
-        "center": "Ajna",
-        "degrees": {"start": 138.523, "end": 144.3},
-    },
-    {
-        "name": "Gate 29",
-        "sign": "Leo/Virgo",
-        "center": "Sacral",
-        "degrees": {"start": 144.3, "end": 150.073},
-    },
-    {
-        "name": "Gate 59",
-        "sign": "Gemini",
-        "center": "Sacral",
-        "degrees": {"start": 150.073, "end": 155.45},
-    },
-    {
-        "name": "Gate 40",
-        "sign": "Virgo",
-        "center": "Heart",
-        "degrees": {"start": 155.45, "end": 161.223},
-    },
-    {
-        "name": "Gate 64",
-        "sign": "Virgo",
-        "center": "Head",
-        "degrees": {"start": 161.223, "end": 167},
-    },
-    {
-        "name": "Gate 47",
-        "sign": "Virgo",
-        "center": "Ajna",
-        "degrees": {"start": 167, "end": 172.373},
-    },
-    {
-        "name": "Gate 6 ",
-        "sign": "Virgo",
-        "center": "Solar Plexus",
-        "degrees": {"start": 172.373, "end": 178.15},
-    },
-    {
-        "name": "Gate 46",
-        "sign": "Libra/Virgo",
-        "center": "Identity",
-        "degrees": {"start": 178.15, "end": 183.523},
-    },
-    {
-        "name": "Gate 18",
-        "sign": "Libra",
-        "center": "Spleen",
-        "degrees": {"start": 183.523, "end": 189.3},
-    },
-    {
-        "name": "Gate 48",
-        "sign": "Libra",
-        "center": "Spleen",
-        "degrees": {"start": 189.3, "end": 195.073},
-    },
-    {
-        "name": "Gate 57",
-        "sign": "Libra",
-        "center": "Spleen",
-        "degrees": {"start": 195.073, "end": 200.45},
-    },
-    {
-        "name": "Gate 32",
-        "sign": "Libra",
-        "center": "Spleen",
-        "degrees": {"start": 200.45, "end": 206.223},
-    },
-    {
-        "name": "Gate 50",
-        "sign": "Libra/Scorpio",
-        "center": "Spleen",
-        "degrees": {"start": 206.223, "end": 212},
-    },
-    {
-        "name": "Gate 28",
-        "sign": "Scorpio",
-        "center": "Spleen",
-        "degrees": {"start": 212, "end": 217.373},
-    },
-    {
-        "name": "Gate 44",
-        "sign": "Scorpio",
-        "center": "Spleen",
-        "degrees": {"start": 217.373, "end": 223.15},
-    },
-    {
-        "name": "Gate 1 ",
-        "sign": "Scorpio",
-        "center": "Identity",
-        "degrees": {"start": 223.15, "end": 228.523},
-    },
-    {
-        "name": "Gate 43",
-        "sign": "Scorpio",
-        "center": "Ajna",
-        "degrees": {"start": 228.523, "end": 234.3},
-    },
-    {
-        "name": "Gate 14",
-        "sign": "Scorpio/Sagittarius",
-        "center": "Sacral",
-        "degrees": {"start": 234.3, "end": 240.073},
-    },
-    {
-        "name": "Gate 34",
-        "sign": "Sagittarius",
-        "center": "Sacral",
-        "degrees": {"start": 240.073, "end": 245.45},
-    },
-    {
-        "name": "Gate 9 ",
-        "sign": "Sagittarius",
-        "center": "Sacral",
-        "degrees": {"start": 245.45, "end": 251.223},
-    },
-    {
-        "name": "Gate 5 ",
-        "sign": "Sagittarius",
-        "center": "Sacral",
-        "degrees": {"start": 251.223, "end": 257},
-    },
-    {
-        "name": "Gate 26",
-        "sign": "Sagittarius",
-        "center": "Heart",
-        "degrees": {"start": 257, "end": 262.373},
-    },
-    {
-        "name": "Gate 11",
-        "sign": "Sagittarius",
-        "center": "Ajna",
-        "degrees": {"start": 262.373, "end": 268.15},
-    },
-    {
-        "name": "Gate 10",
-        "sign": "Sagittarius/Capricorn",
-        "center": "Identity",
-        "degrees": {"start": 268.15, "end": 273.523},
-    },
-    {
-        "name": "Gate 58",
-        "sign": "Capricorn",
-        "center": "Root",
-        "degrees": {"start": 273.523, "end": 279.3},
-    },
-    {
-        "name": "Gate 38",
-        "sign": "Capricorn",
-        "center": "Root",
-        "degrees": {"start": 279.3, "end": 285.073},
-    },
-    {
-        "name": "Gate 54",
-        "sign": "Capricorn",
-        "center": "Root",
-        "degrees": {"start": 285.073, "end": 290.45},
-    },
-    {
-        "name": "Gate 61",
-        "sign": "Capricorn",
-        "center": "Head",
-        "degrees": {"start": 290.45, "end": 296.223},
-    },
-    {
-        "name": "Gate 60",
-        "sign": "Capricorn/Aquarius",
-        "center": "Root",
-        "degrees": {"start": 296.223, "end": 302},
-    },
-    {
-        "name": "Gate 41",
-        "sign": "Aquarius",
-        "center": "Root",
-        "degrees": {"start": 302, "end": 307.373},
-    },
-    {
-        "name": "Gate 19",
-        "sign": "Aquarius",
-        "center": "Root",
-        "degrees": {"start": 307.373, "end": 313.15},
-    },
-    {
-        "name": "Gate 13",
-        "sign": "Aquarius",
-        "center": "Identity",
-        "degrees": {"start": 313.15, "end": 318.523},
-    },
-    {
-        "name": "Gate 49",
-        "sign": "Aquarius",
-        "center": "Solar Plexus",
-        "degrees": {"start": 318.523, "end": 324.3},
-    },
-    {
-        "name": "Gate 30",
-        "sign": "Aquarius/Pisces",
-        "center": "Solar Plexus",
-        "degrees": {"start": 324.3, "end": 330.073},
-    },
-    {
-        "name": "Gate 55",
-        "sign": "Pisces",
-        "center": "Solar Plexus",
-        "degrees": {"start": 330.073, "end": 335.45},
-    },
-    {
-        "name": "Gate 37",
-        "sign": "Pisces",
-        "center": "Solar Plexus",
-        "degrees": {"start": 335.45, "end": 341.223},
-    },
-    {
-        "name": "Gate 63",
-        "sign": "Pisces",
-        "center": "Head",
-        "degrees": {"start": 341.223, "end": 347},
-    },
-    {
-        "name": "Gate 22",
-        "sign": "Pisces",
-        "center": "Solar Plexus",
-        "degrees": {"start": 347, "end": 352.373},
-    },
-    {
-        "name": "Gate 36",
-        "sign": "Pisces",
-        "center": "Solar Plexus",
-        "degrees": {"start": 352.373, "end": 358.15},
-    },
-    {
-        "name": "Gate 25",
-        "sign": "Aries/Pisces",
-        "center": "Identity",
-        "degrees": {"start": 358.15, "end": 3.523},
-    },
-]
+
+def load_gates_data():
+    """Load gates data from JSON file"""
+    try:
+        # Get the directory where this script is located
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        gates_file_path = os.path.join(script_dir, "gates.json")
+
+        with open(gates_file_path, "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"Warning: gates.json not found at {gates_file_path}")
+        return []
+    except json.JSONDecodeError as e:
+        print(f"Error parsing gates.json: {e}")
+        return []
+    except Exception as e:
+        print(f"Error loading gates data: {e}")
+        return []
+
+
+# Load gates data from JSON file
+gates_data = load_gates_data()
 
 
 def get_zodiac_sign(degree):
@@ -432,55 +72,126 @@ def get_gate(degree):
     return "unknown"
 
 
-def next_ten_gate_changes(reference_time=None, step_minutes=1):
+def next_ten_gate_changes(reference_time=None):
+    """
+    Calculate the next 10 gate changes using Swiss Ephemeris.
+
+    Args:
+        reference_time: Starting time for calculations (defaults to current UTC time)
+
+    Returns:
+        List of tuples containing (datetime, gate_name) for the next 10 gate changes
+    """
     if reference_time is None:
         reference_time = datetime.utcnow().replace(microsecond=0)
-        print(f'{reference_time}')
-        
 
-    jd = swe.julday(
+    # Convert reference time to Julian Day
+    jd_start = swe.julday(
         reference_time.year,
         reference_time.month,
         reference_time.day,
         reference_time.hour + reference_time.minute / 60 + reference_time.second / 3600,
     )
-    print(f'{jd}')
-    
-    moon_position, _ = swe.calc_ut(jd, swe.MOON)
+
+    # Get current moon position and gate
+    moon_position, _ = swe.calc_ut(jd_start, swe.MOON)
     current_longitude = moon_position[0]
-    current_gate = next(
-        g
-        for g in gates_data
-        if g["degrees"]["start"] <= current_longitude < g["degrees"]["end"]
-    )
+
+    # Find current gate
+    current_gate = None
+    for gate in gates_data:
+        if gate["degrees"]["start"] <= current_longitude < gate["degrees"]["end"]:
+            current_gate = gate
+            break
+
+    if not current_gate:
+        print(
+            f"Warning: Could not determine current gate for longitude {current_longitude}"
+        )
+        return []
 
     results = []
     current_index = gates_data.index(current_gate)
 
+    # Calculate the next 10 gate changes
     for i in range(10):
         next_index = (current_index + i + 1) % len(gates_data)
         next_gate = gates_data[next_index]
         target_degree = next_gate["degrees"]["start"]
-        step_days = step_minutes / (24 * 60)
-        
-        while True:
-            moon_position, _ = swe.calc_ut(jd, swe.MOON)
-            current_longitude = moon_position[0]
-            transition_time = swe.revjul(jd)
+
+        # Find the exact transition time
+        transition_jd = find_moon_degree_simple(jd_start, target_degree)
+
+        if transition_jd:
+            # Convert Julian Day back to datetime
+            transition_time = swe.revjul(transition_jd)
             year, month, day = map(int, transition_time[:3])
             hours, minutes, seconds = decimal_to_hms(transition_time[3])
-            transition_datetime = datetime(
-                year, month, day, hours, minutes, seconds
-            )
-            
-            if abs(current_longitude - target_degree) < 0.01:
-                results.append((transition_datetime.isoformat(), next_gate["name"]))
-                break
-            
-            else:
-                jd += step_days
+            transition_datetime = datetime(year, month, day, hours, minutes, seconds)
+
+            results.append((transition_datetime.isoformat(), next_gate["name"]))
+
+            # Update start time for next iteration
+            jd_start = (
+                transition_jd + 0.001
+            )  # Small increment to avoid finding same transition
 
     return results
+
+
+def find_moon_degree_simple(start_jd, target_degree):
+    """
+    Find when the Moon reaches a specific degree using simple binary search.
+
+    Args:
+        start_jd: Starting Julian Day
+        target_degree: Target lunar longitude in degrees
+
+    Returns:
+        Julian Day of the transition, or None if not found
+    """
+    # Normalize target degree
+    target_degree = target_degree % 360
+
+    # Get current position
+    moon_position, _ = swe.calc_ut(start_jd, swe.MOON)
+    current_longitude = moon_position[0] % 360
+
+    # If we're already at the target, return start time
+    if abs(current_longitude - target_degree) < 0.001:
+        return start_jd
+
+    # Estimate time to reach target (moon moves ~13.2 degrees per day)
+    degrees_to_travel = (target_degree - current_longitude) % 360
+    estimated_days = degrees_to_travel / 13.2
+
+    # Set search bounds
+    jd_low = start_jd
+    jd_high = start_jd + min(estimated_days * 2, 30)  # Max 30 days
+
+    # Binary search
+    for _ in range(20):  # Max 20 iterations
+        jd_mid = (jd_low + jd_high) / 2
+
+        moon_position, _ = swe.calc_ut(jd_mid, swe.MOON)
+        mid_longitude = moon_position[0] % 360
+
+        # Calculate shortest angular distance
+        diff = (mid_longitude - target_degree + 180) % 360 - 180
+
+        if abs(diff) < 0.001:  # Within 3.6 seconds of arc
+            return jd_mid
+
+        if diff > 0:
+            jd_high = jd_mid
+        else:
+            jd_low = jd_mid
+
+        # Check if search bounds are too close
+        if jd_high - jd_low < 0.0001:  # About 8.6 seconds
+            return jd_mid
+
+    return None
 
 
 def decimal_to_hms(decimal_hours):
@@ -489,13 +200,37 @@ def decimal_to_hms(decimal_hours):
     seconds = round((decimal_hours - hours - minutes / 60) * 3600)
     return hours, minutes, seconds
 
+
 def convert_to_dms(degrees):
     d = int(degrees)
-    
+
     remaining = abs(degrees - d)
     minutes = int(remaining * 60)
 
     return f"{d}°{minutes}"
+
+
+def calculate_moon_phase(longitude):
+    """Calculate moon phase based on lunar longitude"""
+    # Moon phases based on longitude:
+    # 0° = New Moon, 90° = First Quarter, 180° = Full Moon, 270° = Last Quarter
+    if 0 <= longitude < 45:
+        return "Waxing Crescent"
+    elif 45 <= longitude < 90:
+        return "1st Quarter"
+    elif 90 <= longitude < 135:
+        return "Waxing Gibbous"
+    elif 135 <= longitude < 180:
+        return "Full Moon"
+    elif 180 <= longitude < 225:
+        return "Waning Gibbous"
+    elif 225 <= longitude < 270:
+        return "3rd Quarter"
+    elif 270 <= longitude < 315:
+        return "Waning Crescent"
+    else:
+        return "Dark Moon"
+
 
 def generate_moon_data():
     now = datetime.utcnow()
@@ -518,6 +253,10 @@ def generate_moon_data():
 
     next_ten_gates = next_ten_gate_changes()
 
+    # Calculate moon phase as fallback
+    moon_phase = calculate_moon_phase(longitude)
+    illumination = abs(math.sin(math.radians(longitude)))
+
     moon_data = {
         "date": now.isoformat(),
         "longitude": round(longitude, 6),
@@ -525,10 +264,13 @@ def generate_moon_data():
         "degree": dms,
         "gate": gate,
         "next_10_gates": next_ten_gates,
+        "moon_phase": moon_phase,
+        "illumination": round(illumination, 3),
     }
 
     print(f"Moon Data: {moon_data}")
     return moon_data
+
 
 if __name__ == "__main__":
     generate_moon_data()
