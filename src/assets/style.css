@@ -96,7 +96,7 @@ h1 {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  height: 623px;
+  height: auto;
 }
 
 .current-moon h2 {
@@ -151,7 +151,7 @@ h1 {
 }
 
 .info-value {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #ffffff;
 }
@@ -168,7 +168,7 @@ h1 {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  height: 623px;
+  height: auto;
 }
 
 .gates-header {

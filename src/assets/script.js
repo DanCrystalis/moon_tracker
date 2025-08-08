@@ -42,7 +42,7 @@ function updateLastUpdatedTime() {
 function showLoading() {
   loadingSpinner.style.display = 'block';
   currentMoonSection.innerHTML = `
-    <h2>Current Moon Position</h2>
+    <h2>Current Moon</h2>
     <div class="loading-spinner" id="loading-spinner">
       <div class="spinner"></div>
       <p>Fetching moon data...</p>
@@ -114,7 +114,7 @@ async function fetchMoonData() {
 
       // Update current moon section
       currentMoonSection.innerHTML = `
-        <h2>Current Moon Position</h2>
+        <h2>Current Moon</h2>
         <div class="moon-phase-display">
           <img src="${imageUrl}" alt="${phase}" class="moon-phase-image" title="${phase}">
         </div>
