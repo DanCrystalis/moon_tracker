@@ -1,6 +1,10 @@
 from flask import Flask, send_from_directory, jsonify, request
 from src.services import generate_moon_data
 import requests
+import urllib3
+
+# Suppress insecure HTTPS warnings for the farmsense proxy
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 #from src.services import generate_sun_data
 
 app = Flask(__name__, static_folder="src/assets")

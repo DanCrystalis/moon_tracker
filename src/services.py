@@ -181,9 +181,10 @@ def find_moon_degree_simple(start_jd, target_degree):
 
 
 def decimal_to_hms(decimal_hours):
-    hours = int(decimal_hours)
-    minutes = int((decimal_hours - hours) * 60)
-    seconds = round((decimal_hours - hours - minutes / 60) * 3600)
+    # Convert decimal hours to total whole seconds using floor to avoid 60-second rollovers
+    total_seconds = int(decimal_hours * 3600)
+    hours, remainder = divmod(total_seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
     return hours, minutes, seconds
 
 
