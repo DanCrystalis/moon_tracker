@@ -7,6 +7,7 @@
   <title>Moon Tracker</title>
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
   <link rel="stylesheet" href="assets/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -16,6 +17,9 @@
       <div class="last-updated" id="last-updated">
         <span class="update-label">Last updated:</span>
         <span class="update-time" id="update-time">--</span>
+        <button class="refresh-btn" id="refresh-btn" aria-label="Refresh data">
+          <span class="refresh-icon">↻</span>
+        </button>
       </div>
     </header>
 
@@ -32,9 +36,10 @@
       <section class="future-gates" id="future-gates">
         <div class="gates-header">
           <h2>Upcoming Moon Gates</h2>
-          <button class="refresh-btn" id="refresh-btn" aria-label="Refresh data">
-            <span class="refresh-icon">↻</span>
-          </button>
+          <div class="gates-controls">
+            <label for="gate-count" class="gate-count-label" title="Number of future gates to show">Count</label>
+            <input type="number" id="gate-count" class="gate-count-input" min="1" max="128" value="32" aria-label="Number of future gates to display">
+          </div>
         </div>
         <div class="gates-content" id="gates-content">
           <!-- Gates will be populated by JavaScript -->

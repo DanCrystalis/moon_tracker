@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory, jsonify
+from flask import Flask, send_from_directory, jsonify, request
 from src.services import generate_moon_data
 import requests
 #from src.services import generate_sun_data
@@ -13,7 +13,13 @@ def serve_index():
 # API route to fetch moon data
 @app.route("/data")
 def get_data():
-    return generate_moon_data()
+    # Read optional count parameter and clamp between 1 and 128, default 32
+    try:
+        count = int(request.args.get("count", 32))
+    except (TypeError, ValueError):
+        count = 32
+    count = max(1, min(128, count))
+    return generate_moon_data(count=count)
 
 # Proxy route for moon phases API to avoid certificate issues
 @app.route("/moonphases")

@@ -57,35 +57,26 @@ def get_gate(degree):
             start = gt["degrees"]["start"]
             end = gt["degrees"]["end"]
 
-            print(
-                f"Checking degree {degree} against gate '{gt['name']}' range ({start} - {end})"
-            )
-
             if start <= degree <= end:
-                print(f"Match found: {gt['name']}")
                 return gt["name"]
         except KeyError as e:
-            print(f"KeyError: {e} in {gt}")
+            pass
         except TypeError as e:
-            print(f"TypeError: {e} in {gt}")
-    print(f"No match found for degree {degree}.")
+            pass
     return "unknown"
 
 
-def next_ten_gate_changes(reference_time=None):
-    """
-    Calculate the next 10 gate changes using Swiss Ephemeris.
+def next_gate_changes(count=32, reference_time=None):
+    # Clamp count to safe bounds
+    try:
+        count = int(count)
+    except (TypeError, ValueError):
+        count = 32
+    count = max(1, min(128, count))
 
-    Args:
-        reference_time: Starting time for calculations (defaults to current UTC time)
-
-    Returns:
-        List of tuples containing (datetime, gate_name) for the next 10 gate changes
-    """
     if reference_time is None:
         reference_time = datetime.utcnow().replace(microsecond=0)
 
-    # Convert reference time to Julian Day
     jd_start = swe.julday(
         reference_time.year,
         reference_time.month,
@@ -105,16 +96,13 @@ def next_ten_gate_changes(reference_time=None):
             break
 
     if not current_gate:
-        print(
-            f"Warning: Could not determine current gate for longitude {current_longitude}"
-        )
         return []
 
     results = []
     current_index = gates_data.index(current_gate)
 
-    # Calculate the next 10 gate changes
-    for i in range(10):
+    # Calculate the next `count` gate changes
+    for i in range(count):
         next_index = (current_index + i + 1) % len(gates_data)
         next_gate = gates_data[next_index]
         target_degree = next_gate["degrees"]["start"]
@@ -132,9 +120,7 @@ def next_ten_gate_changes(reference_time=None):
             results.append((transition_datetime.isoformat(), next_gate["name"]))
 
             # Update start time for next iteration
-            jd_start = (
-                transition_jd + 0.001
-            )  # Small increment to avoid finding same transition
+            jd_start = transition_jd + 0.001  # Small increment to avoid finding same transition
 
     return results
 
@@ -232,7 +218,7 @@ def calculate_moon_phase(longitude):
         return "Dark Moon"
 
 
-def generate_moon_data():
+def generate_moon_data(count=32):
     now = datetime.utcnow()
 
     jd = swe.julday(
@@ -251,7 +237,7 @@ def generate_moon_data():
 
     gate = get_gate(longitude)
 
-    next_ten_gates = next_ten_gate_changes()
+    next_gates = next_gate_changes(count=count)
 
     # Calculate moon phase as fallback
     moon_phase = calculate_moon_phase(longitude)
@@ -263,7 +249,7 @@ def generate_moon_data():
         "zodiac_sign": zodiac_sign,
         "degree": dms,
         "gate": gate,
-        "next_10_gates": next_ten_gates,
+        "next_gates": next_gates,
         "moon_phase": moon_phase,
         "illumination": round(illumination, 3),
     }

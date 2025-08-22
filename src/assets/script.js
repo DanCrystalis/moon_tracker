@@ -4,6 +4,7 @@ const gatesContent = document.getElementById('gates-content');
 const updateTimeElement = document.getElementById('update-time');
 const refreshBtn = document.getElementById('refresh-btn');
 const loadingSpinner = document.getElementById('loading-spinner');
+const gateCountInput = document.getElementById('gate-count');
 
 // Moon phase image mapping
 const phaseImages = {
@@ -49,7 +50,6 @@ function showLoading() {
     </div>
   `;
   
-  // Also show loading state for gates section
   gatesContent.innerHTML = `
     <div class="loading-spinner" id="loading-spinner">
       <div class="spinner"></div>
@@ -90,14 +90,31 @@ function createGateItem(gate, isNext = false) {
 }
 
 // Main data fetching function
+function getDesiredGateCount() {
+  const stored = localStorage.getItem('gateCount');
+  const parsed = parseInt(stored, 10);
+  if (!isNaN(parsed)) {
+    return Math.max(1, Math.min(128, parsed));
+  }
+  return 32;
+}
+
+function setDesiredGateCount(value) {
+  const clamped = Math.max(1, Math.min(128, parseInt(value, 10) || 32));
+  localStorage.setItem('gateCount', String(clamped));
+  if (gateCountInput) gateCountInput.value = String(clamped);
+  return clamped;
+}
+
 async function fetchMoonData() {
   try {
     showLoading();
     
     // Fetch both moon phases and gate data
+    const desiredCount = getDesiredGateCount();
     const [moonResponse, apiResponse] = await Promise.all([
       fetch('/moonphases'),
-      fetch('/data')
+      fetch(`/data?count=${desiredCount}`)
     ]);
 
     if (!moonResponse.ok || !apiResponse.ok) {
@@ -119,17 +136,18 @@ async function fetchMoonData() {
           <img src="${imageUrl}" alt="${phase}" class="moon-phase-image" title="${phase}">
         </div>
         <div class="moon-info-grid">
+          ${createInfoCard('Position', `${apiData.gate} - ${apiData.zodiac_sign} ${apiData.degree}°`)}
           ${createInfoCard('Moon Name', moon.Moon.join(', '))}
           ${createInfoCard('Phase', phase)}
           ${createInfoCard('Illumination', `${(moon.Illumination * 100).toFixed(1)}%`)}
-          ${createInfoCard('Position', `${apiData.gate} - ${apiData.zodiac_sign} ${apiData.degree}°`)}
         </div>
       `;
 
       // Update gates section
-      if (apiData.next_10_gates && apiData.next_10_gates.length > 0) {
-        const nextGate = apiData.next_10_gates[0];
-        const remainingGates = apiData.next_10_gates.slice(1);
+      const gates = apiData.next_gates || [];
+      if (gates.length > 0) {
+        const nextGate = gates[0];
+        const remainingGates = gates.slice(1);
         
         gatesContent.innerHTML = `
           <div class="next-gate-section">
@@ -138,7 +156,9 @@ async function fetchMoonData() {
           </div>
           ${remainingGates.length > 0 ? `
             <div class="upcoming-gates-section">
-              <h3>Upcoming Gate Changes</h3>
+              <div class="upcoming-header">
+                <h3>Upcoming Gate Changes</h3>
+              </div>
               ${remainingGates.map(gate => createGateItem(gate)).join('')}
             </div>
           ` : ''}
@@ -163,60 +183,28 @@ async function fetchMoonData() {
 
 // Event listeners
 refreshBtn.addEventListener('click', () => {
-  // Add visual feedback for refresh
   refreshBtn.style.transform = 'rotate(360deg)';
-  refreshBtn.style.transition = 'transform 0.5s ease';
+  refreshBtn.style.transition = 'transform 1s ease';
   
   fetchMoonData();
   
-  // Reset the rotation after animation
   setTimeout(() => {
     refreshBtn.style.transform = 'rotate(0deg)';
-  }, 500);
+  }, 800);
 });
 
-// Add some CSS for the new elements
-const additionalStyles = `
-  .retry-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    padding: 10px 20px;
-    color: #ffffff;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: all 0.3s ease;
-  }
-  
-  .retry-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-  }
-  
-  .next-gate {
-    border-left: 4px solid #4CAF50;
-    background: rgba(76, 175, 80, 0.1);
-  }
-  
-  .next-gate-section h3,
-  .upcoming-gates-section h3 {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 20px 0 10px 0;
-    padding-bottom: 5px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .no-gates-message {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.7);
-    padding: 40px 20px;
-  }
-`;
-
-// Inject additional styles
-const styleSheet = document.createElement('style');
-styleSheet.textContent = additionalStyles;
-document.head.appendChild(styleSheet);
+// Initialize gate count input
+if (gateCountInput) {
+  // Set initial value from localStorage or default
+  gateCountInput.value = String(getDesiredGateCount());
+  gateCountInput.addEventListener('change', () => {
+    const clamped = setDesiredGateCount(gateCountInput.value);
+    if (gateCountInput.value !== String(clamped)) {
+      gateCountInput.value = String(clamped);
+    }
+    fetchMoonData();
+  });
+}
 
 // Initialize the app
 fetchMoonData();
