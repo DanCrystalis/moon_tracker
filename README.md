@@ -7,7 +7,7 @@ A small Flask web app that displays the Moon’s current position and the next g
 ### Features
 
 - **Current Moon data**: zodiac sign, degree in sign, Human Design gate, phase, illumination
-- **Upcoming gates**: next lunar cycle of gate changes with timestamps.
+- **Upcoming gates**: next n gate changes with timestamps (default 32).
 - **Lightweight UI**: static HTML/CSS/JS served by Flask
 - **External API proxy**: optional `/moonphases` proxy to FarmSense with safe fallback to local calculation
 
@@ -32,11 +32,11 @@ A small Flask web app that displays the Moon’s current position and the next g
 
 ### Swiss Ephemeris and ephemeris files
 
-- Moon Tracker uses **Swiss Ephemeris** via `pyswisseph` for precise lunar positions (`swe.calc_ut(..., swe.MOON)`).
+- Moon Tracker uses **Swiss Ephemeris** via their Python API `pyswisseph` for precise lunar positions (`swe.calc_ut(..., swe.MOON)`).
 - Swiss Ephemeris requires binary ephemeris data files to be available at runtime:
   - `semo_18.se1`: lunar ephemeris (Moon)
   - `sepl_18.se1`: planetary ephemeris (used internally by Swiss Ephemeris)
-- These files are included in the project root and are loaded automatically when the current working directory contains them. 
+- These files are included in the project root and are loaded automatically when the current working directory contains them.
 
 ## Setup and run
 

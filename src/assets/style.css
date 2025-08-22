@@ -249,6 +249,11 @@ h2 {
   border: 2px solid rgb(255 255 255 / 22%);
 }
 
+.gate-item.next-gate:hover {
+  background: rgba(151, 255, 154, 0.171);
+}
+
+
 .gate-item {
   background: rgba(255, 255, 255, 0.05);
   padding: 15px;

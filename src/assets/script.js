@@ -136,7 +136,7 @@ async function fetchMoonData() {
           <img src="${imageUrl}" alt="${phase}" class="moon-phase-image" title="${phase}">
         </div>
         <div class="moon-info-grid">
-          ${createInfoCard('Position', `${apiData.gate} - ${apiData.zodiac_sign} ${apiData.degree}°`)}
+          ${createInfoCard('Position', `${apiData.gate} - ${apiData.zodiac_sign} ${apiData.degree}'`)}
           ${createInfoCard('Moon Name', moon.Moon.join(', '))}
           ${createInfoCard('Phase', phase)}
           ${createInfoCard('Illumination', `${(moon.Illumination * 100).toFixed(1)}%`)}
