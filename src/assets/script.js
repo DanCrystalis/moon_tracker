@@ -8,6 +8,7 @@ const gateCountInput = document.getElementById('gate-count');
 
 // Moon phase image mapping
 const phaseImages = {
+  "New Moon": "new_moon.svg",
   "Dark Moon": "dark_moon.svg",
   "Waxing Crescent": "waxing_crescent.svg",
   "1st Quarter": "1st_quarter.svg",
