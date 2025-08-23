@@ -204,16 +204,10 @@ h2 {
   justify-content: center;
 }
 
-.refresh-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: rotate(180deg);
-}
-
 .refresh-icon {
   font-size: 1.2rem;
 }
 
-/* Copy button styled like refresh */
 .copy-btn {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -364,6 +358,10 @@ h2 {
 
   .gates-header {
     flex-direction: column;
+  }
+
+  .copy-icon {
+    margin-top: 0;
   }
 
   .info-label,
