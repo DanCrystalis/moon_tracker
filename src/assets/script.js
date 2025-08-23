@@ -3,6 +3,7 @@ const currentMoonSection = document.getElementById('current-moon');
 const gatesContent = document.getElementById('gates-content');
 const updateTimeElement = document.getElementById('update-time');
 const refreshBtn = document.getElementById('refresh-btn');
+const copyBtn = document.getElementById('copy-btn');
 const loadingSpinner = document.getElementById('loading-spinner');
 const gateCountInput = document.getElementById('gate-count');
 
@@ -195,6 +196,9 @@ async function fetchMoonData() {
       }
 
       updateLastUpdatedTime();
+
+      // Cache latest data for copy function
+      window.__latestMoon = { moon, apiData, imageUrl, phase };
     } else {
       showError(moonData[0]?.ErrorMsg || 'Unknown error occurred while fetching moon data');
       setFavicon('assets/images/favicon.ico', 'image/x-icon');
@@ -217,6 +221,78 @@ refreshBtn.addEventListener('click', () => {
     refreshBtn.style.transform = 'rotate(0deg)';
   }, 800);
 });
+
+// Copy helpers
+function formatMoonDataForCopy() {
+  const data = window.__latestMoon;
+  if (!data) {
+    return 'Moon data not loaded yet. Click refresh and try again.';
+  }
+  const { moon, apiData, phase } = data;
+  const lines = [];
+  lines.push(`Current Moon`);
+  lines.push(`- Position: ${apiData.gate} - ${apiData.zodiac_sign} ${apiData.degree}'`);
+  lines.push(`- Moon Name: ${Array.isArray(moon.Moon) ? moon.Moon.join(', ') : String(moon.Moon)}`);
+  lines.push(`- Phase: ${phase}`);
+  lines.push(`- Illumination: ${(moon.Illumination * 100).toFixed(1)}%`);
+
+  const gates = Array.isArray(apiData.next_gates) ? apiData.next_gates : [];
+  if (gates.length > 0) {
+    lines.push('');
+    lines.push('Gate Changes');
+    const formatter = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
+    gates.forEach((g, idx) => {
+      try {
+        const when = formatter.format(new Date(g[0]));
+        const name = g[1];
+        lines.push(`${idx === 0 ? '* Next' : '-'} ${name} — ${when}`);
+      } catch (_) {
+        lines.push(`${idx === 0 ? '* Next' : '-'} ${g[1]} — ${g[0]}`);
+      }
+    });
+  }
+  return lines.join('\n');
+}
+
+async function copyMoonDataToClipboard() {
+  const text = formatMoonDataForCopy();
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (err) {
+    // Fallback: use a temporary textarea if Clipboard API fails
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'absolute';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+}
+
+if (copyBtn) {
+  copyBtn.addEventListener('click', async () => {
+    const ok = await copyMoonDataToClipboard();
+    if (!ok) return;
+    // brief visual feedback
+    const original = copyBtn.innerHTML;
+    copyBtn.innerHTML = '<span class="copy-icon">✓</span>';
+    copyBtn.style.transition = 'transform 0.2s ease';
+    copyBtn.style.transform = 'scale(1.1)';
+    setTimeout(() => {
+      copyBtn.style.transform = 'scale(1)';
+      copyBtn.innerHTML = original;
+    }, 800);
+  });
+}
 
 // Initialize gate count input
 if (gateCountInput) {

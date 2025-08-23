@@ -213,6 +213,29 @@ h2 {
   font-size: 1.2rem;
 }
 
+/* Copy button styled like refresh */
+.copy-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 3px 8px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.copy-icon {
+  font-size: 1.0rem;
+  margin-top: 6px;
+}
+
 /* Gates Controls */
 .gates-controls {
   display: flex;
