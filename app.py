@@ -1,4 +1,6 @@
 from flask import Flask, send_from_directory, jsonify, request
+import os
+import json
 from src.services import generate_moon_data
 import requests
 import urllib3
@@ -65,6 +67,20 @@ def get_moon_phases():
 @app.route("/assets/<path:filename>")
 def serve_assets(filename):
     return send_from_directory("src/assets", filename)
+
+# Endpoint to expose gates data
+@app.route("/gates")
+def get_gates():
+    try:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        gates_path = os.path.join(base_dir, "src", "gates.json")
+        with open(gates_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return jsonify(data)
+    except FileNotFoundError:
+        return jsonify([])
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)

@@ -135,12 +135,21 @@ h1 {
   text-align: center;
 }
 
+.info-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
 .info-label {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #ffffff;
   margin-bottom: 8px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 .info-value {
@@ -216,7 +225,7 @@ h2 {
 }
 
 .gate-count-input {
-  width: 80px;
+  width: 67px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
@@ -272,6 +281,9 @@ h2 {
   font-weight: 600;
   color: #ffffff;
   margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .gate-time {
@@ -297,8 +309,13 @@ h2 {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Error States */
@@ -316,17 +333,20 @@ h2 {
   .container {
     padding: 15px;
   }
-  
+
   h1 {
     font-size: 2rem;
   }
 
   .gates-header {
-     flex-direction: column;
+    flex-direction: column;
   }
-  .info-label, .info-value {
+
+  .info-label,
+  .info-value {
     font-size: 0.7rem;
   }
+
   .info-card {
     padding: 10px;
   }
@@ -342,21 +362,27 @@ h2 {
   .gate-time {
     font-size: 0.7rem;
   }
+
   .gate-item {
     padding: 10px;
   }
+
   .current-moon,
   .future-gates {
     padding: 20px;
   }
-  
+
   .moon-phase-image {
     width: 150px;
     height: 150px;
   }
-  
+
   .moon-info-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .gate-count-input {
+    width: 40px;
   }
 }
 
@@ -408,4 +434,47 @@ h2 {
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
   padding: 40px 20px;
+}
+
+/* Tooltip Styles */
+.tooltip {
+  position: fixed;
+  z-index: 9999;
+  max-width: 380px;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.75);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 120ms ease, transform 120ms ease;
+  pointer-events: none;
+  margin: 10px;
+}
+
+.tooltip[data-show="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: var(--arrow-left, 20px);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
+}
+
+.tooltip[data-placement="bottom"]::after {
+  top: -6px;
+  bottom: auto;
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent rgba(0, 0, 0, 0.75) transparent;
 }

@@ -3,384 +3,448 @@
         "name": "Gate 17",
         "sign": "Aries",
         "center": "Ajna",
-        "degrees": {"start": 3.523, "end": 9.3}
+        "degrees": {"start": 3.523, "end": 9.3},
+        "tooltip": "The Moon in Gate 17 highlights emotional attachment to opinions and the drive to seek clarity through structured patterns of thought. Gate 17, the Gate of Opinions, symbolises the mind’s urge to organise perception into frameworks, offering guidance but not certainty. The Moon amplifies this with cyclical emotional influence, making opinions feel urgent or compelling. Its symbolism reflects the interplay of intuition and logic, showing how moods shape what we choose to see as truth or direction."
     },
     {
         "name": "Gate 21",
         "sign": "Aries",
         "center": "Heart",
-        "degrees": {"start": 9.3, "end": 15.073}
+        "degrees": {"start": 9.3, "end": 15.073},
+        "tooltip": "The Moon in Gate 21 stirs emotions around control, responsibility, and the wise management of resources. This gate wants to steward, allocate, and set healthy limits, and lunar tides can make that urge feel urgent or protective. When centered, it brings practical authority and clear boundaries; when reactive, it can clutch or micromanage. Its symbolism highlights sovereignty grounded in service: knowing when to take the reins, when to delegate, and how to align willpower with the needs of the whole."
     },
     {
         "name": "Gate 51",
         "sign": "Aries",
         "center": "Heart",
-        "degrees": {"start": 15.073, "end": 20.45}
+        "degrees": {"start": 15.073, "end": 20.45},
+        "tooltip": "The Moon in Gate 51 heightens the impulse to leap into the unknown, using shock as a catalyst for awakening. Emotional surges can arrive like thunder—disruptive yet clarifying—provoking courage, competition, or bold initiation. Constructively, this energy tests the heart, revealing genuine bravery and integrity under pressure. Its symbolism speaks to rites of passage: startling moments that jolt awareness, break complacency, and open a more honest path. The practice is to meet intensity with presence, humility, and clean intent."
     },
     {
         "name": "Gate 42",
         "sign": "Aries",
         "center": "Sacral",
-        "degrees": {"start": 20.45, "end": 26.223}
+        "degrees": {"start": 20.45, "end": 26.223},
+        "tooltip": "The Moon in Gate 42 emphasizes completion, growth, and the maturation of experiences. Feelings swell around finishing what was started, harvesting lessons, and honoring natural timelines. When rushed, emotions may push for outcomes before they are ripe; when patient, cycles close with grace and meaning. This gate’s symbolism is seasonal: pruning, tending, and reaping at the appropriate time. It invites discernment about where to invest energy, so effort compounds rather than scatters, turning past momentum into purposeful fruition."
     },
     {
         "name": "Gate 3",
         "sign": "Aries/Taurus",
         "center": "Sacral",
-        "degrees": {"start": 26.223, "end": 32}
+        "degrees": {"start": 26.223, "end": 32},
+        "tooltip": "The Moon in Gate 3 draws attention to the tender chaos at beginnings—where mutation seeks structure. Emotions can oscillate between frustration and excitement as new patterns struggle to stabilize. With patience, curiosity, and iterative refinement, order gradually emerges from apparent disorder. This gate’s symbolism honors incubation: allowing awkward first steps, embracing trial and error, and trusting that clarity coalesces through practice. It reminds us that genuine innovation rarely arrives fully formed; it crystallizes when we give change room to breathe."
     },
     {
         "name": "Gate 27",
         "sign": "Taurus",
         "center": "Sacral",
-        "degrees": {"start": 32, "end": 37.373}
+        "degrees": {"start": 32, "end": 37.373},
+        "tooltip": "The Moon in Gate 27 amplifies instincts to nourish, protect, and sustain life. Emotions focus on care—what to feed, support, or shield—and the boundaries that keep generosity regenerative. Overgiving drains; discerning provision strengthens. This gate’s symbolism centers on stewardship of body, family, and community: resourcing what is truly needed, teaching self-reliance, and honoring reciprocity. Lunar tides illuminate the difference between rescuing and empowering, guiding a compassionate yes shaped by capacity, and a wise no that preserves everyone’s dignity."
     },
     {
         "name": "Gate 24",
         "sign": "Taurus",
         "center": "Ajna",
-        "degrees": {"start": 37.373, "end": 43.15}
+        "degrees": {"start": 37.373, "end": 43.15},
+        "tooltip": "The Moon in Gate 24 intensifies the mental loop of returning to a thought until it resolves. Emotions color the cycle of revision, oscillating between fixation and breakthrough. When spacious, insights recombine and simplify; when pressured, rumination grows compulsive. This gate’s symbolism values quiet reassessment: stepping back, letting ideas breathe, and allowing answers to arrive in their own timing. It suggests that clarity is less a forceful extraction than a gentle unknowing, where the mind relaxes into coherent understanding."
     },
     {
         "name": "Gate 2",
         "sign": "Taurus",
         "center": "Identity",
-        "degrees": {"start": 43.15, "end": 48.523}
+        "degrees": {"start": 43.15, "end": 48.523},
+        "tooltip": "The Moon in Gate 2 sensitizes orientation and inner direction, inviting receptive alignment with the path that serves. Feelings may heighten around navigation, resources, and the grace of being led rather than forcing outcomes. This gate’s symbolism is a steady keel: stillness before movement, values guiding choices, and openness to support. When attuned, direction emerges naturally and resources organize around true purpose. When anxious, one grasps for control. Trust returns by softening into guidance and moving when invited."
     },
     {
         "name": "Gate 23",
         "sign": "Taurus",
         "center": "Throat",
-        "degrees": {"start": 48.523, "end": 54.3}
+        "degrees": {"start": 48.523, "end": 54.3},
+        "tooltip": "The Moon in Gate 23 influences the timing and tone of expression, urging complex ideas to crystallize into simple, impactful language. Emotional tides can pressure speaking too soon or too sharply; patience invites elegant clarity and recognition. This gate’s symbolism is distillation: letting disparate pieces click into a clean formulation others can receive. It favors saying less with more precision, speaking to the right audience at the right moment, and allowing truth to land without adornment or defensiveness."
     },
     {
         "name": "Gate 8",
         "sign": "Taurus/Gemini",
         "center": "Throat",
-        "degrees": {"start": 54.3, "end": 60.073}
+        "degrees": {"start": 54.3, "end": 60.073},
+        "tooltip": "The Moon in Gate 8 highlights contribution through authentic style and example. Emotions may swell around belonging, creative allegiance, and where to place your endorsement. This gate’s symbolism centers on amplifying what is truly you—and thereby strengthening the collective. It asks for aligned collaboration, not performative conformity. When clear, your presence adds coherence and inspiration; when uncertain, approval-seeking muddies influence. The practice is to commit your voice to what you admire, letting sincerity, not volume, carry your impact."
     },
     {
         "name": "Gate 20",
         "sign": "Gemini",
         "center": "Throat",
-        "degrees": {"start": 60.073, "end": 65.45}
+        "degrees": {"start": 60.073, "end": 65.45},
+        "tooltip": "The Moon in Gate 20 draws awareness to presence in the now—seeing and saying what is true in real time. Emotional waves can provoke impulsive declarations; grounded attention refines immediacy into accurate response. This gate’s symbolism is lucid action: witnessing clearly, articulating cleanly, and moving only as life actually presents. It teaches that timing is intelligence. When centered, speech and deed align effortlessly; when reactive, the moment is missed. Practice pausing just enough to let clarity speak."
     },
     {
         "name": "Gate 16",
         "sign": "Gemini",
         "center": "Throat",
-        "degrees": {"start": 65.45, "end": 71.223}
+        "degrees": {"start": 65.45, "end": 71.223},
+        "tooltip": "The Moon in Gate 16 energizes enthusiasm for practice, skill-building, and expressive performance. Feelings can swing between confident flair and self-doubt; devotion to repetition turns sparks into mastery. This gate’s symbolism honors craft: refining technique, calibrating feedback, and sharing when readiness meets opportunity. It favors experiments that sharpen competence over performances that chase validation. With lunar tides, inspiration surges—sustain it by showing up again and again, letting disciplined joy transform potential into consistent, resonant impact."
     },
     {
         "name": "Gate 35",
         "sign": "Gemini",
         "center": "Throat",
-        "degrees": {"start": 71.223, "end": 77}
+        "degrees": {"start": 71.223, "end": 77},
+        "tooltip": "The Moon in Gate 35 heightens appetite for new experiences and the emotions that accompany change. Restlessness can surge, seeking novelty to escape stagnation, yet fulfillment comes from experiences that carry meaning and closure. This gate speaks to transitions—initiations, endings, and the stories they create. When paced, curiosity matures into wisdom through reflection; when rushed, adventures blur without integration. Its symbolism invites choosing journeys that truly grow you, then honoring completion so the next chapter begins with clarity, gratitude, and renewed presence."
     },
     {
         "name": "Gate 45",
         "sign": "Gemini",
         "center": "Throat",
-        "degrees": {"start": 77, "end": 82.373}
+        "degrees": {"start": 77, "end": 82.373},
+        "tooltip": "The Moon in Gate 45 brings emotion to stewardship, voice, and the distribution of resources. Feelings may rise around territory, belonging, and the responsibility to speak for a group. At its best, this leadership serves and organizes; at its worst, it clings or commands. The symbolism centers on the sovereign in service—gathering, sharing, and articulating a common direction. Influence lands cleanly when generosity, transparency, and consent guide decisions, turning authority from ownership into care for the whole."
     },
     {
         "name": "Gate 12",
         "sign": "Gemini",
         "center": "Throat",
-        "degrees": {"start": 82.373, "end": 88.15}
+        "degrees": {"start": 82.373, "end": 88.15},
+        "tooltip": "The Moon in Gate 12 refines emotional timing for expression, favoring considered speech over impulsive release. Moods can open or close the throat; discernment protects the power of your voice. This gate’s symbolism is poise—the elegant pause that lets feeling ripen into artful words. When patient, communication becomes measured, evocative, and impactful; when pressured, it turns brittle or dramatic. Honor the cadence of your heart. Speak when the air is clear, and silence becomes part of the message."
     },
     {
         "name": "Gate 15",
         "sign": "Gemini/Cancer",
         "center": "Identity",
-        "degrees": {"start": 88.15, "end": 93.523}
+        "degrees": {"start": 88.15, "end": 93.523},
+        "tooltip": "The Moon in Gate 15 magnifies sensitivity to rhythms and extremes, inviting love for humanity’s wide range. Emotional tides may swing between intensity and calm; the practice is compassionate consistency—honoring diversity while modeling integrity. This gate’s symbolism is breadth: holding paradox, adapting without losing center, and welcoming difference as a source of vitality. When grounded, it eases social friction and harmonizes disparate tempos; when unmoored, it chases extremes. Anchor in values that humanize the spectrum."
     },
     {
         "name": "Gate 52",
         "sign": "Cancer",
         "center": "Root",
-        "degrees": {"start": 93.523, "end": 99.3}
+        "degrees": {"start": 93.523, "end": 99.3},
+        "tooltip": "The Moon in Gate 52 concentrates pressure into stillness, sharpening focus by quieting unnecessary motion. Emotions might seek distraction, yet the medicine is purposeful immobility—rooting attention so energy can gather. This gate’s symbolism is the mountain: pausing to see clearly, committing to the task at hand, and letting calm become strength. When receptive, stillness becomes a powerful lens that orders priorities; when resistant, restlessness scatters potency. Choose what to hold, and let silence do part of the work."
     },
     {
         "name": "Gate 39",
         "sign": "Cancer",
         "center": "Root",
-        "degrees": {"start": 99.3, "end": 105.073}
+        "degrees": {"start": 99.3, "end": 105.073},
+        "tooltip": "The Moon in Gate 39 stirs the urge to provoke feeling and test what is stale or lifeless. This provocation seeks authenticity, not conflict—pressing against numbness to discover spirit. Emotions may spike as pressure meets resistance; clarity comes by challenging with empathy and consent. The symbolism here is catalytic friction: playfully or poignantly disrupting stuck energy so truth can emerge. Used wisely, it awakens passion and connection; used carelessly, it agitates. Aim your spark toward aliveness."
     },
     {
         "name": "Gate 53",
         "sign": "Cancer",
         "center": "Root",
-        "degrees": {"start": 105.073, "end": 110.45}
+        "degrees": {"start": 105.073, "end": 110.45},
+        "tooltip": "The Moon in Gate 53 ignites beginnings—urging starts, launches, and the momentum of becoming. Emotional pressure may crave novelty, yet wisdom chooses which seeds to plant and how to nurture them. This gate pairs with Gate 42 to complete cycles; here the focus is initiation with intention. Its symbolism is germination: protecting tender shoots, pacing commitments, and aligning resources before sprinting. When grounded, starts are clean and sustainable; when impulsive, they fragment. Begin what you are truly willing to grow."
     },
     {
         "name": "Gate 62",
         "sign": "Cancer",
         "center": "Throat",
-        "degrees": {"start": 110.45, "end": 116.223}
+        "degrees": {"start": 110.45, "end": 116.223},
+        "tooltip": "The Moon in Gate 62 sharpens the urge to name, specify, and render ideas provable. Emotions may push for exactness or nitpick details; skill is in arranging facts so they clarify rather than constrict. This gate’s symbolism is articulation: selecting the right words, measures, and examples to ground understanding. When attuned, it translates complexity into practical steps; when strained, it becomes pedantic. Give form to thought with precision and kindness so truth can be recognized."
     },
     {
         "name": "Gate 56",
         "sign": "Cancer/Leo",
         "center": "Throat",
-        "degrees": {"start": 116.223, "end": 122}
+        "degrees": {"start": 116.223, "end": 122},
+        "tooltip": "The Moon in Gate 56 animates storytelling, travel of the mind, and sharing experiences that stimulate perspective. Emotions may seek novelty or an audience; the art is to entertain with meaning, not noise. This gate’s symbolism is the wanderer’s tale: connecting dots, weaving images, and offering insight through narrative. When grounded, stories inspire and orient; when restless, they overreach or embellish. Speak from lived truth, and let curiosity carry listeners toward a wider horizon."
     },
     {
         "name": "Gate 31",
         "sign": "Leo",
         "center": "Throat",
-        "degrees": {"start": 122, "end": 127.373}
+        "degrees": {"start": 122, "end": 127.373},
+        "tooltip": "The Moon in Gate 31 emphasizes influential speech that emerges by recognition and consent of the collective. Emotions may crave leadership; responsibility asks whether the voice serves. This gate’s symbolism is democratic authority—guidance offered as representation, not decree. When aligned, words mobilize goodwill and clarify direction; when ego-driven, they alienate. Let humility, listening, and shared purpose shape what you say so influence becomes a trust extended, and your leadership amplifies the wisdom of your community."
     },
     {
         "name": "Gate 33",
         "sign": "Leo",
         "center": "Throat",
-        "degrees": {"start": 127.373, "end": 133.15}
+        "degrees": {"start": 127.373, "end": 133.15},
+        "tooltip": "The Moon in Gate 33 invites retreat, reflection, and the curation of memory. Emotions ask for privacy to metabolize experience before sharing. This gate’s symbolism is the archivist: discerning what to keep, what to release, and how to frame stories so they preserve dignity and meaning. When honored, withdrawal restores clarity and turns the past into teachable narrative; when ignored, oversharing drains resonance. Protect what is sacred, and speak when reflection yields a clean, considered tale."
     },
     {
         "name": "Gate 7",
         "sign": "Leo",
         "center": "Identity",
-        "degrees": {"start": 133.15, "end": 138.523}
+        "degrees": {"start": 133.15, "end": 138.523},
+        "tooltip": "The Moon in Gate 7 brings feeling to leadership expressed through guidance rather than domination. Emotions can swell around responsibility, direction, and the willingness to represent a collective voice. This gate’s symbolism favors participatory authority—listening deeply, aligning with shared values, and pointing the way without coercion. When centered, influence becomes service, clarifying the path so others can choose it freely. When reactive, it grasps for control. Steward direction by inviting consent and modeling integrity in motion."
     },
     {
         "name": "Gate 4",
         "sign": "Leo",
         "center": "Ajna",
-        "degrees": {"start": 138.523, "end": 144.3}
+        "degrees": {"start": 138.523, "end": 144.3},
+        "tooltip": "The Moon in Gate 4 colors the search for answers with emotional urgency or relief. This gate formulates solutions to doubt; lunar tides can tempt premature certainty or encourage patient inquiry. Its symbolism is hypothesis over dogma—testing ideas, refining assumptions, and letting clarity settle rather than forcing it. When balanced, answers are practical and elegant; when pressed, they become brittle. Treat questions as living, and allow the mind to crystallize a response in its right time."
     },
     {
         "name": "Gate 29",
         "sign": "Leo/Virgo",
         "center": "Sacral",
-        "degrees": {"start": 144.3, "end": 150.073}
+        "degrees": {"start": 144.3, "end": 150.073},
+        "tooltip": "The Moon in Gate 29 intensifies the emotional pull of commitment and the power of a wholehearted yes. Desire may surge to say yes to everything; wisdom chooses sustainably. This gate’s symbolism is perseverance—devotion that carries through difficulty because the commitment is true. When aligned, endurance transforms trials into mastery; when misaligned, over-commitment drains life force. Let your body confirm your yes, and allow no to protect the space where your deepest vows can thrive."
     },
     {
         "name": "Gate 59",
         "sign": "Virgo",
         "center": "Sacral",
-        "degrees": {"start": 150.073, "end": 155.45}
+        "degrees": {"start": 150.073, "end": 155.45},
+        "tooltip": "The Moon in Gate 59 stirs intimacy, dissolving distance to invite honesty, creativity, and bonding. Emotions sensitize needs for closeness or space, highlighting consent and timing. This gate’s symbolism is fertile openness: softening defenses so truth can meet and be met. When respected, it nurtures trust, shared creation, and generative union; when pushed, it can feel invasive. Let vulnerability be chosen, not demanded, and allow connection to deepen at the pace of safety and sincerity."
     },
     {
         "name": "Gate 40",
         "sign": "Virgo",
         "center": "Heart",
-        "degrees": {"start": 155.45, "end": 161.223}
+        "degrees": {"start": 155.45, "end": 161.223},
+        "tooltip": "The Moon in Gate 40 highlights emotions around work, promises, and the need for genuine rest. This gate delivers, but lunar tides reveal when fatigue or isolation sets in. Its symbolism is clean exchange: making clear agreements, honoring capacity, and returning to the tribe to be received. When balanced, giving and recovery complete each other; when imbalanced, resentment grows. Let boundaries protect your heart’s labor, and schedule restoration so commitment remains wholehearted and sustainable."
     },
     {
         "name": "Gate 64",
         "sign": "Virgo",
         "center": "Head",
-        "degrees": {"start": 161.223, "end": 167}
+        "degrees": {"start": 161.223, "end": 167},
+        "tooltip": "The Moon in Gate 64 magnifies the tension of confusion before clarity, flooding the mind with images and fragments seeking coherence. Emotions may push for quick answers; wisdom waits for patterns to constellate. This gate’s symbolism is the cloud before the rain—pressure that precedes realization. When accepted, it becomes a creative gestation; when resisted, it feels overwhelming. Give spacious attention to the mosaic forming, and let insight condense into meaning without forcing resolution."
     },
     {
         "name": "Gate 47",
         "sign": "Virgo",
         "center": "Ajna",
-        "degrees": {"start": 167, "end": 172.373}
+        "degrees": {"start": 167, "end": 172.373},
+        "tooltip": "The Moon in Gate 47 brings feeling to the process of realization—transforming mental pressure into integrated understanding. Emotional weight can feel like oppression when meanings won’t land; compassion and perspective unlock synthesis. This gate’s symbolism is reframing: forgiving the past, reorganizing memory, and finding the narrative that frees energy. When grounded, insights arrive as relief and purpose; when strained, they fixate. Let gentleness guide interpretation so understanding becomes liberating rather than heavy."
     },
     {
         "name": "Gate 6",
         "sign": "Virgo",
         "center": "Solar Plexus",
-        "degrees": {"start": 172.373, "end": 178.15}
+        "degrees": {"start": 172.373, "end": 178.15},
+        "tooltip": "The Moon in Gate 6 amplifies emotional boundaries, conflict, and the delicate opening to intimacy. Waves can heighten sensitivity; clarity comes through timing, consent, and atmosphere. This gate’s symbolism is friction as discernment—testing whether a field is safe enough to connect or signal a pause. When honored, differences are negotiated and closeness deepens; when ignored, volatility escalates. Attend to the quality of contact, and let the right conditions invite genuine union."
     },
     {
         "name": "Gate 46",
         "sign": "Libra/Virgo",
         "center": "Identity",
-        "degrees": {"start": 178.15, "end": 183.523}
+        "degrees": {"start": 178.15, "end": 183.523},
+        "tooltip": "The Moon in Gate 46 awakens love of the body, right place/right time, and the grace of embodied devotion. Emotions highlight the need to be present in your skin—moving with care, pleasure, and alignment. This gate’s symbolism is serendipity meeting preparedness: life opens when you show up physically and wholeheartedly. When grounded, you feel carried; when dissociated, you miss the doorways. Honor your body as the altar where purpose becomes lived."
     },
     {
         "name": "Gate 18",
         "sign": "Libra",
         "center": "Spleen",
-        "degrees": {"start": 183.523, "end": 189.3}
+        "degrees": {"start": 183.523, "end": 189.3},
+        "tooltip": "The Moon in Gate 18 stirs emotions around critique, improvement, and justice. This gate spots what is off and longs to correct it; lunar tides color tone and timing. Its symbolism is calibration—aiming judgment toward service, not punishment. When constructive, feedback heals systems and restores trust; when harsh, it wounds. Choose humility, evidence, and care, and let corrections be targeted and kind so the instinct to fix becomes a gift the world can receive."
     },
     {
         "name": "Gate 48",
         "sign": "Libra",
         "center": "Spleen",
-        "degrees": {"start": 189.3, "end": 195.073}
+        "degrees": {"start": 189.3, "end": 195.073},
+        "tooltip": "The Moon in Gate 48 deepens sensitivity to competence and the fear of inadequacy. Emotions may question readiness; practice and resourcing reveal a rich well of depth. This gate’s symbolism is the artesian spring—reliable skill that flows when tapped regularly. When respected, it offers grounded solutions and quiet mastery; when doubted, it hides. Keep learning, organize your tools, and trust that your accumulated depth can meet the moment without show, only substance."
     },
     {
         "name": "Gate 57",
         "sign": "Libra",
         "center": "Spleen",
-        "degrees": {"start": 195.073, "end": 200.45}
+        "degrees": {"start": 195.073, "end": 200.45},
+        "tooltip": "The Moon in Gate 57 heightens intuitive clarity in the now, attuning perception to subtle cues. Emotions can either cloud or sensitize awareness; quiet presence sharpens the signal. This gate’s symbolism is the whisper that saves time—immediate knowing that doesn’t need justification. When honored, it guides with accuracy and gentleness; when overridden, anxiety grows. Slow down enough to hear the softest information and let instinct inform action without drama."
     },
     {
         "name": "Gate 32",
         "sign": "Libra",
         "center": "Spleen",
-        "degrees": {"start": 200.45, "end": 206.223}
+        "degrees": {"start": 200.45, "end": 206.223},
+        "tooltip": "The Moon in Gate 32 evokes instincts about continuity, risking wisely, and preserving what endures. Emotions may scan for threats to viability or opportunities to evolve. This gate’s symbolism is stewardship of potential—protecting what can grow strong, letting go of what cannot, and adapting without losing essence. When aligned, it senses which paths carry lasting value; when fearful, it clings. Trust your nose for durability and move with strategic patience."
     },
     {
         "name": "Gate 50",
         "sign": "Libra/Scorpio",
         "center": "Spleen",
-        "degrees": {"start": 206.223, "end": 212}
+        "degrees": {"start": 206.223, "end": 212},
+        "tooltip": "The Moon in Gate 50 stirs emotions around values, care, and responsibility to the tribe. This gate holds the ethical container—what is acceptable, nourishing, and protective. Its symbolism is the hearth: boundaries that keep warmth in and harm out. When centered, it distributes care fairly and upholds standards with compassion; when rigid, it moralizes. Let your principles be lived, not preached, and organize resources so collective well-being is practical, dignified, and consistent."
     },
     {
         "name": "Gate 28",
         "sign": "Scorpio",
         "center": "Spleen",
-        "degrees": {"start": 212, "end": 217.373}
+        "degrees": {"start": 212, "end": 217.373},
+        "tooltip": "The Moon in Gate 28 heightens the search for meaning through confronting risk, fear, and the possibility of loss. Emotions can intensify around whether a challenge is worth the struggle. This gate’s symbolism is courageous discernment—testing yourself against life to discover purpose, not to chase danger. When aligned, you choose battles that grow soul and skill; when misaligned, you resist or rebel without aim. Let intuition weigh stakes and move where depth, not drama, is promised."
     },
     {
         "name": "Gate 44",
         "sign": "Scorpio",
         "center": "Spleen",
-        "degrees": {"start": 217.373, "end": 223.15}
+        "degrees": {"start": 217.373, "end": 223.15},
+        "tooltip": "The Moon in Gate 44 sensitizes memory of patterns—recognizing what’s returning and how to meet it better. Emotions may flare with anticipation or apprehension as the past echoes through the present. This gate’s symbolism is informed readiness: greeting familiar dynamics with upgraded integrity, skill, and boundaries. When centered, you welcome opportunity and sidestep repetition; when reactive, you project old stories. Trust your body’s recall, check assumptions, and prepare cleanly so history becomes a teacher, not a trap."
     },
     {
         "name": "Gate 1",
         "sign": "Scorpio",
         "center": "Identity",
-        "degrees": {"start": 223.15, "end": 228.523}
+        "degrees": {"start": 223.15, "end": 228.523},
+        "tooltip": "The Moon in Gate 1 stirs pure creative expression—the urge to make, move, and radiate authenticity. Emotions color inspiration, sometimes flooding, sometimes quiet. This gate’s symbolism is the primal spark: creation for its own sake, without needing validation. When honored, your natural style emerges and influences by presence; when forced, expression strains. Court your muse through devotion and spaciousness, and let creativity flow from being rather than effort, trusting that what is true will naturally shine."
     },
     {
         "name": "Gate 43",
         "sign": "Scorpio",
         "center": "Ajna",
-        "degrees": {"start": 228.523, "end": 234.3}
+        "degrees": {"start": 228.523, "end": 234.3},
+        "tooltip": "The Moon in Gate 43 amplifies the pressure for breakthrough—knowing that arrives whole, then seeks expression. Emotions may push to share too soon or guard insights until recognition is present. This gate’s symbolism is the bolt of clarity: radical, individual, and often ahead of its time. When grounded, you translate insight simply for receptive ears; when rushed, it sounds abrupt. Protect incubation, refine language, and offer your revelation where it can be heard."
     },
     {
         "name": "Gate 14",
         "sign": "Scorpio/Sagittarius",
         "center": "Sacral",
-        "degrees": {"start": 234.3, "end": 240.073}
+        "degrees": {"start": 234.3, "end": 240.073},
+        "tooltip": "The Moon in Gate 14 highlights the flow of resources toward purpose—work, energy, and fortune aligning with direction. Emotions may rise around provision and independence. This gate’s symbolism is stewardship of abundance: generating, attracting, and channeling resources where they uplift life. When aligned, prosperity feels like momentum in the right stream; when misaligned, effort scatters. Choose the path that suits your nature, and let what you carry feed what you are truly here to do."
     },
     {
         "name": "Gate 34",
         "sign": "Sagittarius",
         "center": "Sacral",
-        "degrees": {"start": 240.073, "end": 245.45}
+        "degrees": {"start": 240.073, "end": 245.45},
+        "tooltip": "The Moon in Gate 34 energizes raw, self-generated power—action moving directly from life force. Emotions can provoke busyness or empowered response. This gate’s symbolism is potency in the now: doing what you’re built to do, when correct. When centered, power is quiet and effective; when reactive, it bulldozes. Align with the present task, avoid overextension, and let strength express through service, not display. Potency is felt, not performed."
     },
     {
         "name": "Gate 9",
         "sign": "Sagittarius",
         "center": "Sacral",
-        "degrees": {"start": 245.45, "end": 251.223}
+        "degrees": {"start": 245.45, "end": 251.223},
+        "tooltip": "The Moon in Gate 9 heightens concentration, patience, and the emotional discipline to attend to details. Waves may test focus with urge to drift or obsess; practice returns to the next small step. This gate’s symbolism is gentle persistence—steadying attention so complexity becomes manageable. When aligned, you build something meaningful one precise action at a time; when strained, you fixate. Let the task shrink to the size of now, and let diligence compound into mastery."
     },
     {
         "name": "Gate 5",
         "sign": "Sagittarius",
         "center": "Sacral",
-        "degrees": {"start": 251.223, "end": 257}
+        "degrees": {"start": 251.223, "end": 257},
+        "tooltip": "The Moon in Gate 5 sensitizes natural rhythms and the comfort of reliable patterns. Emotions may crave routine or resist it; wisdom tunes to a cadence that nourishes. This gate’s symbolism is cosmic timing—aligning daily habits with larger cycles so energy flows. When grounded, consistency becomes freedom, supporting health and creativity; when rigid, it stifles. Listen for the tempo of your body and environment, and let rituals hold you without hardening into cages."
     },
     {
         "name": "Gate 26",
         "sign": "Sagittarius",
         "center": "Heart",
-        "degrees": {"start": 257, "end": 262.373}
+        "degrees": {"start": 257, "end": 262.373},
+        "tooltip": "The Moon in Gate 26 brings feeling to influence, reputation, and the ethics of persuasion. Emotions may tempt embellishment or invite courageous honesty. This gate’s symbolism is artful exchange—presenting value cleanly so trust grows. When aligned, you negotiate fairly, remember what matters, and protect the tribe’s wellbeing; when misused, manipulation erodes credibility. Let integrity be your strategy, refine your message, and allow results to come from reliability rather than spectacle."
     },
     {
         "name": "Gate 11",
         "sign": "Sagittarius",
         "center": "Ajna",
-        "degrees": {"start": 262.373, "end": 268.15}
+        "degrees": {"start": 262.373, "end": 268.15},
+        "tooltip": "The Moon in Gate 11 enriches imagination and the exchange of ideas—images seeking the right setting to be appreciated. Emotions can color taste, craving inspiration or quiet. This gate’s symbolism is the gallery of mind: curating visions, stories, and concepts that invite others to see anew. When recognized, ideas land and circulate; when premature, they feel ornamental. Share where enthusiasm meets readiness, and let the right audience draw out the best of your vision."
     },
     {
         "name": "Gate 10",
         "sign": "Sagittarius/Capricorn",
         "center": "Identity",
-        "degrees": {"start": 268.15, "end": 273.523}
+        "degrees": {"start": 268.15, "end": 273.523},
+        "tooltip": "The Moon in Gate 10 centers behavior rooted in self-love—living your values in motion. Emotions may reveal where care for self wavers or holds. This gate’s symbolism is embodied integrity: choices that honor your form, truth, and path. When aligned, you move naturally and inspire by example; when distorted, behavior seeks approval. Return to devotion to your own heart, and let right action arise from authenticity rather than rule or reaction."
     },
     {
         "name": "Gate 58",
         "sign": "Capricorn",
         "center": "Root",
-        "degrees": {"start": 273.523, "end": 279.3}
+        "degrees": {"start": 273.523, "end": 279.3},
+        "tooltip": "The Moon in Gate 58 amplifies zest for improvement and the joy that comes from refining systems. Emotions may register dissatisfaction not as complaint but as energy to uplift. This gate’s symbolism is vital critique: playful, persistent, and oriented to solutions. When centered, you champion upgrades with optimism; when harsh, the tone eclipses the gift. Aim your enthusiasm at what can be better, involve others constructively, and let delight fuel evolution."
     },
     {
         "name": "Gate 38",
         "sign": "Capricorn",
         "center": "Root",
-        "degrees": {"start": 279.3, "end": 285.073}
+        "degrees": {"start": 279.3, "end": 285.073},
+        "tooltip": "The Moon in Gate 38 stokes the will to fight for purpose—resisting what drains meaning and pursuing what matters. Emotions heighten resolve or frustration. This gate’s symbolism is the principled struggle: picking contests worthy of your life force. When aligned, adversity tempers character and clarifies priorities; when unfocused, combat becomes constant. Choose your cause, conserve energy, and let grit serve devotion rather than opposition for its own sake."
     },
     {
         "name": "Gate 54",
         "sign": "Capricorn",
         "center": "Root",
-        "degrees": {"start": 285.073, "end": 290.45}
+        "degrees": {"start": 285.073, "end": 290.45},
+        "tooltip": "The Moon in Gate 54 energizes ambition, drive, and the impulse to rise through transformation. Emotions may crave advancement; wisdom aligns ascent with integrity and capacity. This gate’s symbolism is spiritual enterprise—investing effort where growth elevates everyone. When grounded, you cultivate alliances, refine yourself, and accept initiations; when grasping, you hustle without depth. Let devotion to becoming guide worldly aims, and allow time to season your climb."
     },
     {
         "name": "Gate 61",
         "sign": "Capricorn",
         "center": "Head",
-        "degrees": {"start": 290.45, "end": 296.223}
+        "degrees": {"start": 290.45, "end": 296.223},
+        "tooltip": "The Moon in Gate 61 intensifies the pressure to know inner truth and the mystery at the heart of life. Emotions can seek certainty where reverence is needed. This gate’s symbolism is sacred inquiry—holding paradox, contemplating the ineffable, and letting wisdom arise quietly. When respected, not-knowing becomes spacious and fertile; when forced, dogma forms. Make time for contemplation, and let understanding reveal itself as grace rather than conquest."
     },
     {
         "name": "Gate 60",
         "sign": "Capricorn/Aquarius",
         "center": "Root",
-        "degrees": {"start": 296.223, "end": 302}
+        "degrees": {"start": 296.223, "end": 302},
+        "tooltip": "The Moon in Gate 60 emphasizes limitation as a creative boundary that shapes form. Emotions may resist constraint or relax into its guidance. This gate’s symbolism is craft through constraint—accepting parameters so mutation can stabilize. When aligned, focus condenses into innovation; when fighting limits, energy disperses. Name the frame, respect timing, and let patience turn pressure into new structure."
     },
     {
         "name": "Gate 41",
         "sign": "Aquarius",
         "center": "Root",
-        "degrees": {"start": 302, "end": 307.373}
+        "degrees": {"start": 302, "end": 307.373},
+        "tooltip": "The Moon in Gate 41 contracts energy to begin a new cycle, stirring imagination and the feeling of threshold. Emotions may surge with longing or possibility. This gate’s symbolism is seed pressure: fantasies that select which experience to embark upon. When focused, desire channels into a single, resonant start; when diffuse, it spreads thin. Choose one story to live next and let the journey teach you what the dream truly holds."
     },
     {
         "name": "Gate 19",
         "sign": "Aquarius",
         "center": "Root",
-        "degrees": {"start": 307.373, "end": 313.15}
+        "degrees": {"start": 307.373, "end": 313.15},
+        "tooltip": "The Moon in Gate 19 heightens sensitivity to needs—your own and the tribe’s—and the approach to intimacy. Emotions can attune or overwhelm; boundaries keep compassion sustainable. This gate’s symbolism is provision through connection: asking, listening, and resourcing fairly. When honored, it builds trust and interdependence; when needy or avoidant, it destabilizes. Let empathy be paired with clear requests and mutual agreements so care circulates cleanly."
     },
     {
         "name": "Gate 13",
         "sign": "Aquarius",
         "center": "Identity",
-        "degrees": {"start": 313.15, "end": 318.523}
+        "degrees": {"start": 313.15, "end": 318.523},
+        "tooltip": "The Moon in Gate 13 invites listening, witnessing, and keeping of stories. Emotions may draw confidences or ask for release. This gate’s symbolism is the archivist of the heart: preserving memory with discretion so collective wisdom can accumulate. When aligned, you give others the grace of being heard and shape the past into guidance; when careless, secrets spill. Hold what you receive with care, and share only when it serves healing."
     },
     {
         "name": "Gate 49",
         "sign": "Aquarius",
         "center": "Solar Plexus",
-        "degrees": {"start": 318.523, "end": 324.3}
+        "degrees": {"start": 318.523, "end": 324.3},
+        "tooltip": "The Moon in Gate 49 charges emotional principles—what you can and cannot accept—and the thresholds that govern relationship and tribe. Feelings may surge toward reform or rupture. This gate’s symbolism is compassionate revolution: resetting agreements when values demand it. When centered, you renegotiate with clarity and care; when reactive, you punish. Let integrity and kindness guide necessary change so belonging is renewed rather than merely enforced."
     },
     {
         "name": "Gate 30",
         "sign": "Aquarius/Pisces",
         "center": "Solar Plexus",
-        "degrees": {"start": 324.3, "end": 330.073}
+        "degrees": {"start": 324.3, "end": 330.073},
+        "tooltip": "The Moon in Gate 30 intensifies feeling and the pull of desire—wanting experiences that promise aliveness. Emotions can burn hot; wisdom contains the flame so it warms rather than scorches. This gate’s symbolism is devotion to feeling itself: allowing passion to teach without attachment to outcome. When aligned, you ride waves with presence; when fixated, you cling. Accept impermanence, and let sincerity, not control, make your experiences sacred."
     },
     {
         "name": "Gate 55",
         "sign": "Pisces",
         "center": "Solar Plexus",
-        "degrees": {"start": 330.073, "end": 335.45}
+        "degrees": {"start": 330.073, "end": 335.45},
+        "tooltip": "The Moon in Gate 55 floods spirit and mood—abundance that ebbs and flows beyond reason. Emotions may swing dramatically; the practice is faithfulness to your inner weather without forcing constancy. This gate’s symbolism is the cup of spirit: receiving grace when it pours and resting when it does not. When honored, generosity and artistry bloom; when resisted, scarcity stories tighten. Trust the tide, and share when your overflow is real."
     },
     {
         "name": "Gate 37",
         "sign": "Pisces",
         "center": "Solar Plexus",
-        "degrees": {"start": 335.45, "end": 341.223}
+        "degrees": {"start": 335.45, "end": 341.223},
+        "tooltip": "The Moon in Gate 37 warms bonds, agreements, and the emotional economy of family and community. Feelings surge around loyalty, fairness, and reciprocity. This gate’s symbolism is the hearth of friendship—hospitality that nourishes both host and guest. When balanced, you craft clear promises and keep them; when imbalanced, obligation replaces care. Revisit expectations with tenderness, and let goodwill renew the social fabric you depend on."
     },
     {
         "name": "Gate 63",
         "sign": "Pisces",
         "center": "Head",
-        "degrees": {"start": 341.223, "end": 347}
+        "degrees": {"start": 341.223, "end": 347},
+        "tooltip": "The Moon in Gate 63 increases doubt and the urge to verify—questions pressing for logical certainty. Emotions may intensify skepticism or drive careful analysis. This gate’s symbolism is constructive doubt: testing assumptions, seeking evidence, and building reliable frameworks. When centered, inquiry strengthens trust; when anxious, it spirals. Define the question, examine cleanly, and let proof accumulate before concluding."
     },
     {
         "name": "Gate 22",
         "sign": "Pisces",
         "center": "Solar Plexus",
-        "degrees": {"start": 347, "end": 352.373}
+        "degrees": {"start": 347, "end": 352.373},
+        "tooltip": "The Moon in Gate 22 refines grace in social exchange—beauty in mood, timing, and tone. Emotions influence presence; forcing charm backfires. This gate’s symbolism is receptive elegance: allowing feeling to infuse voice and gesture so encounters become artful. When honored, you soothe and uplift; when strained, you retreat or overperform. Care for your atmosphere and let sincere warmth do the speaking."
     },
     {
         "name": "Gate 36",
         "sign": "Pisces",
         "center": "Solar Plexus",
-        "degrees": {"start": 352.373, "end": 358.15}
+        "degrees": {"start": 352.373, "end": 358.15},
+        "tooltip": "The Moon in Gate 36 heightens turbulence during change, surfacing fear, excitement, and compassion. Emotions crest and crash; wisdom holds steady through the storm. This gate’s symbolism is the rite of passage—meeting crisis with humanity so experience matures into empathy. When grounded, you respond skillfully and protect the vulnerable; when reactive, drama multiplies. Slow down, orient to care, and let the wave pass."
     },
     {
         "name": "Gate 25",
         "sign": "Aries/Pisces",
         "center": "Identity",
-        "degrees": {"start": 358.15, "end": 3.523}
+        "degrees": {"start": 358.15, "end": 3.523},
+        "tooltip": "The Moon in Gate 25 returns you to innocence—unconditioned love that forgives, includes, and starts fresh. Emotions may seek purification from cynicism or hurt. This gate’s symbolism is the holy heart: aligning with what is inherently good and letting that simplicity guide action. When aligned, you meet life with openness and courage; when wounded, you harden. Soften back into trust, and let sincerity restore your relationship with the world."
     }
 ]
